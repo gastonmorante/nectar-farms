@@ -202,6 +202,57 @@ nav {
     color: var(--accent);
 }
 
+.nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: var(--transition);
+    position: relative;
+    padding: 6px 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: var(--accent);
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--accent-dark);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a.nav-ai-link {
+    color: var(--primary-light);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.nav-links a.nav-ai-link i {
+    font-size: 0.75rem;
+    background: linear-gradient(135deg, #1A73E8, #8E2DE2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .cart-trigger {
     cursor: pointer;
     background: var(--white);
@@ -1774,6 +1825,9 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
     .hero {
         height: 50vh;
         min-height: 400px;
