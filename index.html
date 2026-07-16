@@ -9,6 +9,9 @@
     <!-- Link CSS -->
     <link rel="stylesheet" href="styles.css">
     
+    <!-- Google Fonts Premium: Cormorant Garamond (Editorial Serif) & Plus Jakarta Sans (Modern Sans-serif) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <!-- FontAwesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -31,11 +34,11 @@
 <body>
 
     <!-- Header & Navigation -->
-    <header>
+    <header id="main-header">
         <nav>
             <a href="#" class="logo-container">
                 <!-- Animated SVG Isologo -->
-                <svg class="animated-logo" viewBox="0 0 100 110" width="44" height="48" xmlns="http://www.w3.org/2000/svg">
+                <svg class="animated-logo" viewBox="0 0 100 110" width="40" height="44" xmlns="http://www.w3.org/2000/svg">
                     <!-- Top Oval Arch -->
                     <path class="top-arch" d="M 20 52 L 80 52 C 80 25, 70 10, 50 10 C 30 10, 20 25, 20 52 Z" />
                     
@@ -94,8 +97,8 @@
 
     <!-- Hero Section -->
     <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=1600&q=80');">
-        <div class="hero-content">
-            <h1>Nectar Farms</h1>
+        <div class="hero-content reveal">
+            <h1>Alimentos del campo, cultivados con <em>dedicación</em></h1>
             <p>Directo del campo sustentable a tu mesa en México. Alimentos vivos, 100% locales y de comercio justo.</p>
             <div class="search-container">
                 <i class="fas fa-search search-icon"></i>
@@ -106,33 +109,35 @@
 
     <!-- Main Catalog Section -->
     <section class="catalog-section" id="catalogo">
-        <div class="section-header">
+        <div class="section-header reveal">
             <span class="section-subtitle">Frescura Local</span>
             <h2 class="section-title">Nuestro Catálogo Sustentable</h2>
             
-            <!-- Category Filters -->
-            <div class="categories-container" id="categories-container">
-                <!-- Generado dinámicamente por JS -->
+            <!-- Category Filters Wrapper with Sliding Underline -->
+            <div class="categories-container-wrapper">
+                <div class="categories-container" id="categories-container">
+                    <!-- Generado dinámicamente -->
+                </div>
             </div>
         </div>
 
         <!-- Products Grid -->
-        <div class="products-grid" id="product-grid">
+        <div class="products-grid reveal" id="product-grid">
             <!-- Cargado dinámicamente -->
         </div>
     </section>
 
-    <!-- History Section (Nuestra Historia) -->
+    <!-- History Section (Nuestra Historia - Editorial layout) -->
     <section class="history-section" id="historia">
         <div class="history-container">
-            <div class="history-image-col">
+            <div class="history-image-col reveal">
                 <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80" alt="Agricultores de Nectar Farms" class="history-img">
                 <div class="history-badge">
                     <span class="badge-number">100%</span>
                     <span class="badge-label">Comercio Directo</span>
                 </div>
             </div>
-            <div class="history-text-col">
+            <div class="history-text-col reveal">
                 <span class="section-subtitle">Nuestra Historia</span>
                 <h2 class="section-title">De la Tierra a tu Mesa, Sin Intermediarios</h2>
                 <p class="history-p">Nectar Farms nació en 2021 como una cooperativa de micro-productores y agricultores en el centro de México. Cansados de las comisiones excesivas y la manipulación de precios de las grandes cadenas de supermercados, decidimos unir fuerzas para llegar directamente a los hogares mexicanos.</p>
@@ -154,12 +159,12 @@
     <!-- Philosophy & Brand Values -->
     <section class="philosophy-section">
         <div class="philosophy-container">
-            <div style="text-align: center; margin-bottom: 50px;">
+            <div style="text-align: center; margin-bottom: 50px;" class="reveal">
                 <span class="section-subtitle" style="color: var(--accent);">Compromiso Real</span>
-                <h2 class="section-title" style="color: var(--white); font-size: 2.2rem;">¿Por qué elegir Nectar Farms?</h2>
-                <p style="color: #A2B3AC; max-width: 600px; margin: 0 auto; font-size: 0.95rem;">Nos saltamos los intermediarios para entregarte alimentos limpios de químicos que apoyan la salud y economía de nuestros agricultores locales.</p>
+                <h2 class="section-title">¿Por qué elegir Nectar Farms?</h2>
+                <p style="color: #92A39B; max-width: 600px; margin: 20px auto 0; font-size: 0.95rem;">Nos saltamos los intermediarios para entregarte alimentos limpios de químicos que apoyan la salud y economía de nuestros agricultores locales.</p>
             </div>
-            <div class="philosophy-grid">
+            <div class="philosophy-grid reveal">
                 <div class="philosophy-card">
                     <i class="fas fa-seedling"></i>
                     <h3>100% Sustentable y Limpio</h3>
@@ -182,17 +187,17 @@
     <!-- Vlog Section (Bitácora del Campo) -->
     <section class="vlog-section" id="vlog">
         <div class="vlog-container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <span class="section-subtitle">Nuestra Bitácora</span>
                 <h2 class="section-title">Historias, Consejos y Recetas</h2>
-                <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 0.95rem;">Explora artículos y videos de nuestro equipo sobre sustentabilidad, recetas de campo y estilo de vida saludable.</p>
+                <p style="color: var(--text-muted); max-width: 600px; margin: 15px auto 0; font-size: 0.95rem;">Explora artículos y videos de nuestro equipo sobre sustentabilidad, recetas de campo y estilo de vida saludable.</p>
             </div>
             
-            <div class="vlog-grid">
+            <div class="vlog-grid reveal">
                 <!-- Vlog Card 1 -->
                 <article class="vlog-card">
                     <div class="vlog-img-container">
-                        <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=600&q=80" alt="Miel de Azahar" class="vlog-img">
+                        <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=600&q=80" alt="Miel de Azahar" class="vlog-img" loading="lazy">
                         <span class="vlog-category">Recetas y Nutrición</span>
                     </div>
                     <div class="vlog-content">
@@ -209,7 +214,7 @@
                 <!-- Vlog Card 2 -->
                 <article class="vlog-card">
                     <div class="vlog-img-container">
-                        <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=600&q=80" alt="Pan de Masa Madre" class="vlog-img">
+                        <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=600&q=80" alt="Pan de Masa Madre" class="vlog-img" loading="lazy">
                         <span class="vlog-category">Cocina Rústica</span>
                     </div>
                     <div class="vlog-content">
@@ -226,7 +231,7 @@
                 <!-- Vlog Card 3 -->
                 <article class="vlog-card">
                     <div class="vlog-img-container">
-                        <img src="https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=600&q=80" alt="Espinacas" class="vlog-img">
+                        <img src="https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=600&q=80" alt="Espinacas" class="vlog-img" loading="lazy">
                         <span class="vlog-category">Sustentabilidad</span>
                     </div>
                     <div class="vlog-content">
@@ -333,7 +338,7 @@
     <footer>
         <div class="footer-container">
             <div class="footer-col" style="flex: 1.5;">
-                <div class="logo-text" style="color: var(--white); margin-bottom: 20px; font-size: 1.5rem; font-weight: 700;">NECTAR <span style="color: var(--accent);">FARMS</span></div>
+                <div class="logo-text" style="color: var(--white); margin-bottom: 20px; font-size: 1.2rem; font-weight: 700; letter-spacing: 2px;">NECTAR <span style="color: var(--accent);">FARMS</span></div>
                 <p>Somos una red de micro-productores sustentables en México. Llevamos frescura, salud y justicia social en cada entrega directo a tu puerta.</p>
                 <div class="social-links">
                     <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
@@ -366,7 +371,7 @@
 
     <!-- Logic Script -->
     <script>
-        // Catálogo completo de 20 productos sustentables
+        // Catálogo de 20 productos sustentables
         const products = [
             { 
                 id: 1, 
@@ -550,17 +555,18 @@
             }
         ];
 
-        // Estado del Carrito y Configuración de filtros
+        // Estado del Carrito y Filtros
         let cart = [];
         let activeCategory = 'Todos';
         let searchQuery = '';
 
-        // Inicialización al cargar la página
+        // Inicialización
         document.addEventListener('DOMContentLoaded', () => {
             loadCartFromStorage();
             renderCategories();
             renderProducts();
             updateCartUI();
+            initScrollReveal();
 
             // Escuchar barra de búsqueda
             const searchInput = document.getElementById('search-input');
@@ -568,33 +574,36 @@
                 searchQuery = e.target.value.toLowerCase().trim();
                 renderProducts();
             });
+
+            // Cambios de estilo en el Header al hacer scroll
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('main-header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
         });
 
-        // Cargar carrito desde LocalStorage
+        // Cargar desde LocalStorage
         function loadCartFromStorage() {
             const savedCart = localStorage.getItem('nectar_cart');
             if (savedCart) {
-                try {
-                    cart = JSON.parse(savedCart);
-                } catch (e) {
-                    console.error("Error al cargar carrito:", e);
-                    cart = [];
-                }
+                try { cart = JSON.parse(savedCart); } catch (e) { cart = []; }
             }
         }
 
-        // Guardar carrito en LocalStorage
+        // Guardar en LocalStorage
         function saveCartToStorage() {
             localStorage.setItem('nectar_cart', JSON.stringify(cart));
         }
 
-        // Obtener categorías únicas de la lista de productos
+        // Categorías únicas
         function getCategories() {
             const cats = ['Todos'];
             products.forEach(p => {
-                if (!cats.includes(p.category)) {
-                    cats.push(p.category);
-                }
+                if (!cats.includes(p.category)) { cats.push(p.category); }
             });
             return cats;
         }
@@ -609,24 +618,35 @@
                         onclick="filterCategory('${cat}')">
                     ${cat}
                 </button>
-            `).join('');
+            `).join('') + '<div class="category-indicator" id="category-indicator"></div>';
+
+            // Actualizar línea deslizante
+            setTimeout(updateActiveCategoryIndicator, 40);
         }
 
-        // Filtrar por categoría
         window.filterCategory = function(category) {
             activeCategory = category;
             renderCategories();
             renderProducts();
-            // Desplazar suavemente a catálogo al filtrar desde el footer
             document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth' });
         }
+
+        function updateActiveCategoryIndicator() {
+            const activeBtn = document.querySelector('.category-btn.active');
+            const indicator = document.getElementById('category-indicator');
+            if (activeBtn && indicator) {
+                indicator.style.width = `${activeBtn.offsetWidth}px`;
+                indicator.style.left = `${activeBtn.offsetLeft}px`;
+            }
+        }
+
+        window.addEventListener('resize', updateActiveCategoryIndicator);
 
         // Renderizar lista de productos
         function renderProducts() {
             const grid = document.getElementById('product-grid');
             grid.innerHTML = "";
 
-            // Aplicar filtros de categoría y barra de búsqueda
             const filtered = products.filter(p => {
                 const matchesCategory = (activeCategory === 'Todos' || p.category === activeCategory);
                 const matchesSearch = p.name.toLowerCase().includes(searchQuery) || 
@@ -671,23 +691,42 @@
             });
         }
 
+        // Animación Scroll Reveal con IntersectionObserver
+        function initScrollReveal() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.08
+            };
+            
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                revealObserver.observe(el);
+            });
+        }
+
         // Mostrar Toast Notification
         function showToast(message) {
             const container = document.getElementById('toast-container');
             const toast = document.createElement('div');
-            toast.className = 'toast toast-success';
-            toast.innerHTML = `<i class="fas fa-check-circle"></i> <span>${message}</span>`;
+            toast.className = 'toast';
+            toast.innerHTML = `<i class="fas fa-check-circle" style="color:var(--accent);"></i> <span>${message}</span>`;
             
             container.appendChild(toast);
-            
-            // Forzar reflow para animación
             setTimeout(() => toast.classList.add('show'), 50);
 
-            // Remover toast después de 3 segundos
             setTimeout(() => {
                 toast.classList.remove('show');
                 setTimeout(() => toast.remove(), 400);
-            }, 3000);
+            }, 2500);
         }
 
         // Alternar el carrito
@@ -716,7 +755,6 @@
             updateCartUI();
             showToast(`${product.name} agregado al pedido`);
 
-            // Abrir automáticamente el carrito al agregar, para guiar la compra
             const drawer = document.getElementById('cart-drawer');
             if (!drawer.classList.contains('open')) {
                 toggleCart();
@@ -739,7 +777,7 @@
             updateCartUI();
         }
 
-        // Eliminar producto del carrito por completo
+        // Eliminar producto del carrito
         window.removeFromCart = function(id) {
             const item = cart.find(x => x.id === id);
             if (!item) return;
@@ -838,25 +876,20 @@
         }
 
         window.handleChatKeypress = function(e) {
-            if (e.key === 'Enter') {
-                sendChatMessage();
-            }
+            if (e.key === 'Enter') { sendChatMessage(); }
         }
 
         window.sendSuggestion = function(text) {
-            // Eliminar emojis al inicio de la sugerencia si existen para la consulta
             const cleanText = text.replace(/^[^\wáéíóúÁÉÍÓÚ]*/, '');
             document.getElementById('chat-input').value = cleanText;
             sendChatMessage();
         }
 
         window.addRecipeIngredients = function() {
-            // Receta: Pan de Masa Madre (15), Huevo de Pastoreo (2), Aguacate Hass (3)
-            addToCart(15);
-            addToCart(2);
-            addToCart(3);
+            addToCart(15); // Pan
+            addToCart(2);  // Huevo
+            addToCart(3);  // Aguacate
             
-            // Responder en el chat confirmando
             const body = document.getElementById('chat-body');
             const msgHtml = `
                 <div class="chat-msg bot">
@@ -883,7 +916,7 @@
             const body = document.getElementById('chat-body');
             const time = getCurrentTime();
 
-            // 1. Agregar mensaje del usuario
+            // 1. Mensaje del usuario
             const userMsgHtml = `
                 <div class="chat-msg user">
                     <div class="chat-bubble">${escapeHTML(text)}</div>
@@ -894,13 +927,10 @@
             input.value = "";
             body.scrollTop = body.scrollHeight;
 
-            // Ocultar las sugerencias anteriores si están visibles
             const suggestions = document.getElementById('chat-suggestions');
-            if (suggestions) {
-                suggestions.style.display = 'none';
-            }
+            if (suggestions) { suggestions.style.display = 'none'; }
 
-            // 2. Mostrar indicador de escritura
+            // 2. Indicador de escritura
             const typingHtml = `
                 <div class="chat-msg bot" id="typing-indicator-msg">
                     <div class="typing-indicator">
@@ -913,9 +943,8 @@
             body.insertAdjacentHTML('beforeend', typingHtml);
             body.scrollTop = body.scrollHeight;
 
-            // 3. Simular procesamiento de Gemini y responder en 1-1.5s
+            // 3. Simular procesamiento de Gemini
             setTimeout(() => {
-                // Remover indicador
                 const indicator = document.getElementById('typing-indicator-msg');
                 if (indicator) indicator.remove();
 
