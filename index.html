@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nectar Organic Farms | La Alternativa 100% Local y Sustentable</title>
+    <meta name="description" content="Nectar Organic Farms: La única alternativa real a los supermercados. Productos 100% locales, orgánicos y de comercio justo en México.">
+    
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Schema.org JSON-LD para SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AgriculturalService",
+      "name": "Nectar Organic Farms",
+      "telephone": "+525565427022",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ciudad de México",
+        "addressCountry": "MX"
+      },
+      "url": "https://www.nectarorganicfarms.com.mx"
+    }
+    </script>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <nav>
+            <a href="#" class="logo-container">
+                <!-- Animated SVG Isologo -->
+                <svg class="animated-logo" viewBox="0 0 100 110" width="44" height="48" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Top Oval Arch -->
+                    <path class="top-arch" d="M 20 52 L 80 52 C 80 25, 70 10, 50 10 C 30 10, 20 25, 20 52 Z" />
+                    
+                    <!-- Bottom Oval (solid fill) -->
+                    <path class="bottom-oval" d="M 20 58 L 80 58 C 80 85, 70 100, 50 100 C 30 100, 20 85, 20 58 Z" />
+                    
+                    <!-- Dashed Line inside Bottom Oval -->
+                    <path class="dashed-line" d="M 25 63 C 25 83, 33 94, 50 94 C 67 94, 75 83, 75 63" />
+                    
+                    <!-- Stems -->
+                    <line class="logo-stem-top" x1="50" y1="52" x2="50" y2="25" />
+                    <line class="logo-stem-bottom" x1="50" y1="58" x2="50" y2="78" />
+                    
+                    <!-- Leaves -->
+                    <path class="logo-leaf logo-leaf-center" d="M 50 25 C 46 21, 46 14, 50 11 C 54 14, 54 21, 50 25 Z" />
+                    <path class="logo-leaf logo-leaf-left" d="M 50 33 C 41 33, 38 23, 46 21 C 48 21, 50 25, 50 33 Z" />
+                    <path class="logo-leaf logo-leaf-right" d="M 50 33 C 59 33, 62 23, 54 21 C 52 21, 50 25, 50 33 Z" />
+                    
+                    <!-- Leaf Veins -->
+                    <path class="logo-vein" d="M 50 25 L 50 14" />
+                    <path class="logo-vein" d="M 50 33 Q 46 28, 46 23" />
+                    <path class="logo-vein" d="M 50 33 Q 54 28, 54 23" />
+                    
+                    <!-- Dots -->
+                    <circle class="logo-dot logo-dot-1" cx="34" cy="30" r="1.5" />
+                    <circle class="logo-dot logo-dot-2" cx="32" cy="24" r="1.5" />
+                    <circle class="logo-dot logo-dot-3" cx="36" cy="18" r="1.5" />
+                    <circle class="logo-dot logo-dot-4" cx="66" cy="30" r="1.5" />
+                    <circle class="logo-dot logo-dot-5" cx="68" cy="24" r="1.5" />
+                    <circle class="logo-dot logo-dot-6" cx="64" cy="18" r="1.5" />
+                    
+                    <!-- Roots branches -->
+                    <path class="logo-root logo-root-left" d="M 50 63 C 44 65, 38 68, 32 74" />
+                    <path class="logo-root logo-root-right" d="M 50 63 C 56 65, 62 68, 68 74" />
+                    
+                    <line class="logo-root logo-root-sub logo-root-sub-l1" x1="43" y1="66" x2="43" y2="72" />
+                    <line class="logo-root logo-root-sub logo-root-sub-l2" x1="37" y1="69" x2="34" y2="74" />
+                    <line class="logo-root logo-root-sub logo-root-sub-r1" x1="57" y1="66" x2="57" y2="72" />
+                    <line class="logo-root logo-root-sub logo-root-sub-r2" x1="63" y1="69" x2="66" y2="74" />
+                    
+                    <line class="logo-root logo-root-sub logo-root-bottom-c" x1="50" y1="78" x2="50" y2="86" />
+                    <path class="logo-root logo-root-sub logo-root-bottom-l" d="M 50 78 C 47 80, 44 82, 42 85" />
+                    <path class="logo-root logo-root-sub logo-root-bottom-r" d="M 50 78 C 53 80, 56 82, 58 85" />
+                </svg>
+                <div class="logo-text">NECTAR <span>ORGANIC</span></div>
+            </a>
+            <div class="nav-actions">
+                <div class="cart-trigger" onclick="toggleCart()">
+                    <i class="fas fa-shopping-basket"></i>
+                    <span>Mi Pedido</span>
+                    <span class="cart-badge" id="cart-count">0</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=1600&q=80');">
+        <div class="hero-content">
+            <h1>Nectar Organic Farms</h1>
+            <p>Directo del campo sustentable a tu mesa en México. Alimentos vivos, 100% locales y de comercio justo.</p>
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="search-input" class="search-input" placeholder="Buscar productos orgánicos (ej. Miel, Huevo, Café)...">
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Catalog Section -->
+    <section class="catalog-section" id="catalogo">
+        <div class="section-header">
+            <span class="section-subtitle">Frescura Local</span>
+            <h2 class="section-title">Nuestro Catálogo Sustentable</h2>
+            
+            <!-- Category Filters -->
+            <div class="categories-container" id="categories-container">
+                <!-- Generado dinámicamente por JS -->
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid" id="product-grid">
+            <!-- Cargado dinámicamente -->
+        </div>
+    </section>
+
+    <!-- Philosophy & Brand Values -->
+    <section class="philosophy-section">
+        <div class="philosophy-container">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <span class="section-subtitle" style="color: var(--accent);">Compromiso Real</span>
+                <h2 class="section-title" style="color: var(--white); font-size: 2.2rem;">¿Por qué elegir Nectar Farms?</h2>
+                <p style="color: #A2B3AC; max-width: 600px; margin: 0 auto; font-size: 0.95rem;">Nos saltamos los intermediarios para entregarte alimentos limpios de químicos que apoyan la salud y economía de nuestros agricultores locales.</p>
+            </div>
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <i class="fas fa-seedling"></i>
+                    <h3>100% Orgánico y Limpio</h3>
+                    <p>Cultivado sin pesticidas sintéticos, herbicidas ni fertilizantes químicos nocivos para tu salud.</p>
+                </div>
+                <div class="philosophy-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Comercio Justo y Directo</h3>
+                    <p>Pagamos precios dignos a nuestros productores rurales. Cada compra apoya directamente al campo mexicano.</p>
+                </div>
+                <div class="philosophy-card">
+                    <i class="fas fa-truck-ramp-box"></i>
+                    <h3>Cosecha bajo demanda</h3>
+                    <p>Nuestros productos no pasan meses en refrigeradores de supermercado; cosechamos y entregamos en su punto óptimo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Drawer (Offcanvas) -->
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+    <div id="cart-drawer">
+        <div class="cart-header">
+            <h3>Tu Pedido</h3>
+            <button class="cart-close-btn" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <!-- Cart Items Container -->
+        <div class="cart-content" id="cart-items">
+            <!-- Renderizado dinámicamente -->
+        </div>
+
+        <!-- Cart Footer / Summary -->
+        <div class="cart-footer">
+            <div class="cart-summary-row">
+                <span>Subtotal:</span>
+                <span id="cart-subtotal">$0.00 MXN</span>
+            </div>
+            <div class="cart-summary-row">
+                <span>Envío:</span>
+                <span style="color: var(--primary-light); font-weight: 500;">Coordinado por WhatsApp</span>
+            </div>
+            <div class="cart-summary-row total">
+                <span>Total:</span>
+                <span id="cart-total">$0.00 MXN</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">
+                Enviar pedido a WhatsApp <i class="fab fa-whatsapp"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Containers for Notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Floating WhatsApp button for direct support -->
+    <a href="https://wa.me/525565427022" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col" style="flex: 1.5;">
+                <div class="logo-text" style="color: var(--white); margin-bottom: 20px; font-size: 1.5rem; font-weight: 700;">NECTAR <span style="color: var(--accent);">ORGANIC</span></div>
+                <p>Somos una red de micro-productores sustentables en México. Llevamos frescura, salud y justicia social en cada entrega directo a tu puerta.</p>
+                <div class="social-links">
+                    <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <p style="margin-bottom: 10px;"><i class="fas fa-phone-alt" style="color: var(--accent); margin-right: 8px;"></i> +52 55 6542 7022</p>
+                <p style="margin-bottom: 10px;"><i class="fas fa-envelope" style="color: var(--accent); margin-right: 8px;"></i> hola@nectarfarms.com</p>
+                <p><i class="fas fa-map-marker-alt" style="color: var(--accent); margin-right: 8px;"></i> Ciudad de México, México</p>
+            </div>
+            <div class="footer-col">
+                <h4>Categorías</h4>
+                <ul>
+                    <li><a href="#" onclick="event.preventDefault(); filterCategory('Todos')">Todos los Productos</a></li>
+                    <li><a href="#" onclick="event.preventDefault(); filterCategory('Despensa')">Despensa</a></li>
+                    <li><a href="#" onclick="event.preventDefault(); filterCategory('Frutas y Verduras')">Frutas y Verduras</a></li>
+                    <li><a href="#" onclick="event.preventDefault(); filterCategory('Lácteos y Huevo')">Lácteos y Huevo</a></li>
+                    <li><a href="#" onclick="event.preventDefault(); filterCategory('Bebidas')">Bebidas</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nectar Organic Farms. Todos los derechos reservados.</p>
+            <p>Cultivado y entregado con amor en México. 🇲🇽</p>
+        </div>
+    </footer>
+
+    <!-- Logic Script -->
+    <script>
+        // Catálogo completo de 20 productos sustentables
+        const products = [
+            { 
+                id: 1, 
+                name: "Miel de Azahar", 
+                category: "Despensa", 
+                price: 180, 
+                unit: "Frasco 300g",
+                desc: "Cruda y multifloral. De floración de cítricos del Bajío mexicano, 100% pura y sin filtrar.", 
+                img: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=400&q=80" 
+            },
+            { 
+                id: 2, 
+                name: "Huevo Orgánico (12 pzas)", 
+                category: "Lácteos y Huevo", 
+                price: 85, 
+                unit: "Caja de 12 pzas",
+                desc: "Huevo de libre pastoreo. Gallinas alimentadas con granos orgánicos sin antibióticos ni hormonas.", 
+                img: "https://images.unsplash.com/photo-1516448620398-c5f44bf9f443?auto=format&fit=crop&w=400&q=80" 
+            },
+            { 
+                id: 3, 
+                name: "Aguacate Hass Orgánico (1kg)", 
+                category: "Frutas y Verduras", 
+                price: 95, 
+                unit: "Aprox. 4-5 piezas",
+                desc: "Aguacate Hass cremoso y rico en grasas saludables, cosechado a mano en Michoacán.", 
+                img: "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&w=400&q=80" 
+            },
+            { 
+                id: 4, 
+                name: "Café de Especialidad (250g)", 
+                category: "Despensa", 
+                price: 220, 
+                unit: "Bolsa en Grano o Molido",
+                desc: "Café arábica de altura cultivado bajo sombra en Chiapas. Notas a chocolate y avellana.", 
+                img: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=400&q=80" 
+            },
+            { 
+                id: 5, 
+                name: "Kombucha Jengibre (355ml)", 
+                category: "Bebidas", 
+                price: 65, 
+                unit: "Botella de vidrio",
+                desc: "Bebida fermentada burbujeante a base de té negro con jengibre fresco. Probióticos naturales.", 
+                img: "https://images.unsplash.com/photo-1558160074-4d7d8bdf4256?auto=format&fit=crop&w=400&q=80" 
+            },
+            { 
+                id: 6, 
+                name: "Jitomate Saladet Orgánico (1kg)", 
+                category: "Frutas y Verduras", 
+                price: 45, 
+                unit: "Bolsa compostable 1kg",
+                desc: "Jitomate jugoso y madurado en planta, cultivado bajo agricultura protegida libre de pesticidas.", 
+                img: "https://images.unsplash.com/photo-1595855759920-86582396756a?auto=format&fit=crop&w=400&q=80" 
+            },
+            { 
+                id: 7, 
+                name: "Fresa Orgánica (500g)", 
+                category: "Frutas y Verduras", 
+                price: 75, 
+                unit: "Domo compostable",
+                desc: "Fresas dulces cosechadas al punto óptimo sin químicos sintéticos en Guanajuato.", 
+                img: "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=400&q=80" 
+            },
+            { 
+                id: 8, 
+                name: "Queso de Cabra Artesanal (200g)", 
+                category: "Lácteos y Huevo", 
+                price: 110, 
+                unit: "Pieza envuelta",
+                desc: "Queso madurado de cabra con fina costra de ceniza vegetal. Cremoso y de sabor balanceado.", 
+                img: "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=400&q=80" 
+            },
+            { 
+                id: 9, 
+                name: "Espinaca Orgánica (Manojo)", 
+                category: "Frutas y Verduras", 
+                price: 30, 
+                unit: "Manojo de hojas frescas",
+                desc: "Hojas de espinaca tiernas y crujientes. Cosechadas a primera hora de la mañana para máxima frescura.", 
+                img: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=400&q=80" 
+            },
+            { 
+                id: 10, 
+                name: "Aceite de Oliva Extra Virgen (500ml)", 
+                category: "Despensa", 
+                price: 240, 
+                unit: "Botella de vidrio oscuro",
+                desc: "Aceite de primera prensa fría artesanal de Ensenada, Baja California. Sabor ligeramente frutado.", 
+                img: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=400&q=80" 
+            },
+            { 
+                id: 11, 
+                name: "Tortillas de Maíz Criollo (1kg)", 
+                category: "Despensa", 
+                price: 40, 
+                unit: "Paquete envuelto en papel",
+                desc: "Tortillas hechas a mano con maíz nativo nixtamalizado de pequeños productores locales.", 
+                img: "https://images.unsplash.com/photo-1624462966581-bc6d768cbce5?auto=format&fit=crop&w=400&q=80" 
+            },
+            { 
+                id: 12, 
+                name: "Chocolate de Mesa Artesanal (250g)", 
+                category: "Despensa", 
+                price: 90, 
+                unit: "Tableta redonda",
+                desc: "Chocolate tradicional oaxaqueño molido en piedra con cacao de aroma fino y toque de canela.", 
+                img: "https://images.unsplash.com/photo-1548907040-4d42b52115ca?auto=format&fit=crop&w=400&q=80" 
+            },
+            { 
+                id: 13, 
+                name: "Plátano Tabasco Orgánico (1kg)", 
+                category: "Frutas y Verduras", 
+                price: 35, 
+                unit: "Penca aprox. 5-7 piezas",
+                desc: "Plátanos Tabasco dulces y cremosos de plantaciones sustentables en Chiapas.", 
+                img: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=400&q=80" 
+            },
+            { 
+                id: 14, 
+                name: "Limón Colima con Semilla (1kg)", 
+                category: "Frutas y Verduras", 
+                price: 48, 
+                unit: "Aprox. 12-15 piezas",
+                desc: "Limones jugosos de alta acidez natural cosechados sustentablemente en Colima.", 
+                img: "https://images.unsplash.com/photo-1590502593747-42a996133562?auto=format&fit=crop&w=400&q=80" 
+            },
+            { 
+                id: 15, 
+                name: "Pan de Masa Madre Rústico", 
+                category: "Despensa", 
+                price: 85, 
+                unit: "Hogaza 600g",
+                desc: "Pan rústico de fermentación lenta de 24 horas. Crujiente por fuera, alveolado y suave por dentro.", 
+                img: "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=400&q=80" 
+            },
+            { 
+                id: 16, 
+                name: "Manzana Gala Orgánica (1kg)", 
+                category: "Frutas y Verduras", 
+                price: 65, 
+                unit: "Aprox. 5-6 piezas",
+                desc: "Manzana Gala dulce y crujiente, directa de huertos sustentables de Chihuahua.", 
+                img: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=400&q=80" 
+            },
+            { 
+                id: 17, 
+                name: "Granola Rústica con Semillas (500g)", 
+                category: "Despensa", 
+                price: 95, 
+                unit: "Bolsa Kraft resellable",
+                desc: "Avena tostada con miel pura, semillas de calabaza, girasol, nueces de la India y arándanos.", 
+                img: "https://images.unsplash.com/photo-1517881917430-e70dfb3610aa?auto=format&fit=crop&w=400&q=80" 
+            },
+            { 
+                id: 18, 
+                name: "Té Verde Matcha Ceremonial (50g)", 
+                category: "Bebidas", 
+                price: 320, 
+                unit: "Lata metálica hermética",
+                desc: "Matcha japonés orgánico grado ceremonial premium. Gran poder antioxidante y enfoque mental.", 
+                img: "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=400&q=80" 
+            },
+            { 
+                id: 19, 
+                name: "Flor de Sal de Cuyutlán (500g)", 
+                category: "Despensa", 
+                price: 55, 
+                unit: "Bolsa de yute interior Kraft",
+                desc: "Sal de mar pura libre de microplásticos y químicos, recolectada a mano en Colima.", 
+                img: "https://images.unsplash.com/photo-1613149586174-850d0322d86f?auto=format&fit=crop&w=400&q=80" 
+            },
+            { 
+                id: 20, 
+                name: "Mantequilla de Rancho (250g)", 
+                category: "Lácteos y Huevo", 
+                price: 70, 
+                unit: "Barra envuelta en papel encerado",
+                desc: "Mantequilla batida tradicional a partir de crema de leche fresca entera de vacas libres.", 
+                img: "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=400&q=80" 
+            }
+        ];
+
+        // Estado del Carrito y Configuración de filtros
+        let cart = [];
+        let activeCategory = 'Todos';
+        let searchQuery = '';
+
+        // Inicialización al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCartFromStorage();
+            renderCategories();
+            renderProducts();
+            updateCartUI();
+
+            // Escuchar barra de búsqueda
+            const searchInput = document.getElementById('search-input');
+            searchInput.addEventListener('input', (e) => {
+                searchQuery = e.target.value.toLowerCase().trim();
+                renderProducts();
+            });
+        });
+
+        // Cargar carrito desde LocalStorage
+        function loadCartFromStorage() {
+            const savedCart = localStorage.getItem('nectar_cart');
+            if (savedCart) {
+                try {
+                    cart = JSON.parse(savedCart);
+                } catch (e) {
+                    console.error("Error al cargar carrito:", e);
+                    cart = [];
+                }
+            }
+        }
+
+        // Guardar carrito en LocalStorage
+        function saveCartToStorage() {
+            localStorage.setItem('nectar_cart', JSON.stringify(cart));
+        }
+
+        // Obtener categorías únicas de la lista de productos
+        function getCategories() {
+            const cats = ['Todos'];
+            products.forEach(p => {
+                if (!cats.includes(p.category)) {
+                    cats.push(p.category);
+                }
+            });
+            return cats;
+        }
+
+        // Renderizar botones de filtro
+        function renderCategories() {
+            const container = document.getElementById('categories-container');
+            const categories = getCategories();
+            
+            container.innerHTML = categories.map(cat => `
+                <button class="category-btn ${cat === activeCategory ? 'active' : ''}" 
+                        onclick="filterCategory('${cat}')">
+                    ${cat}
+                </button>
+            `).join('');
+        }
+
+        // Filtrar por categoría
+        window.filterCategory = function(category) {
+            activeCategory = category;
+            renderCategories();
+            renderProducts();
+            // Desplazar suavemente a catálogo al filtrar desde el footer
+            document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Renderizar lista de productos
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = "";
+
+            // Aplicar filtros de categoría y barra de búsqueda
+            const filtered = products.filter(p => {
+                const matchesCategory = (activeCategory === 'Todos' || p.category === activeCategory);
+                const matchesSearch = p.name.toLowerCase().includes(searchQuery) || 
+                                      p.desc.toLowerCase().includes(searchQuery) ||
+                                      p.category.toLowerCase().includes(searchQuery);
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-leaf"></i>
+                        <h3>No encontramos productos</h3>
+                        <p>Prueba buscando con palabras clave diferentes o selecciona otra categoría.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(p => {
+                grid.innerHTML += `
+                    <div class="product-card">
+                        <span class="product-badge">${p.category}</span>
+                        <div class="img-container">
+                            <img class="product-img" src="${p.img}" alt="${p.name}" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">${p.name}</h3>
+                            <p class="product-desc">${p.desc}</p>
+                            <div class="product-footer">
+                                <div class="price-container">
+                                    <span class="price-label">${p.unit}</span>
+                                    <span class="price-val">$${p.price} MXN</span>
+                                </div>
+                                <button class="add-to-cart-btn" onclick="addToCart(${p.id})" title="Agregar al pedido">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // Mostrar Toast Notification
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast toast-success';
+            toast.innerHTML = `<i class="fas fa-check-circle"></i> <span>${message}</span>`;
+            
+            container.appendChild(toast);
+            
+            // Forzar reflow para animación
+            setTimeout(() => toast.classList.add('show'), 50);
+
+            // Remover toast después de 3 segundos
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        }
+
+        // Alternar el carrito
+        window.toggleCart = function() {
+            document.getElementById('cart-drawer').classList.toggle('open');
+            document.getElementById('cart-overlay').classList.toggle('open');
+        }
+
+        // Agregar un producto al carrito
+        window.addToCart = function(id) {
+            const product = products.find(p => p.id === id);
+            if (!product) return;
+
+            const existingItem = cart.find(item => item.id === id);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    ...product,
+                    quantity: 1
+                });
+            }
+
+            saveCartToStorage();
+            updateCartUI();
+            showToast(`${product.name} agregado al pedido`);
+
+            // Abrir automáticamente el carrito al agregar, para guiar la compra
+            const drawer = document.getElementById('cart-drawer');
+            if (!drawer.classList.contains('open')) {
+                toggleCart();
+            }
+        }
+
+        // Cambiar cantidad en el carrito
+        window.changeQuantity = function(id, delta) {
+            const item = cart.find(x => x.id === id);
+            if (!item) return;
+
+            item.quantity += delta;
+
+            if (item.quantity <= 0) {
+                cart = cart.filter(x => x.id !== id);
+                showToast("Producto eliminado del pedido");
+            }
+
+            saveCartToStorage();
+            updateCartUI();
+        }
+
+        // Eliminar producto del carrito por completo
+        window.removeFromCart = function(id) {
+            const item = cart.find(x => x.id === id);
+            if (!item) return;
+
+            cart = cart.filter(x => x.id !== id);
+            saveCartToStorage();
+            updateCartUI();
+            showToast(`${item.name} eliminado del pedido`);
+        }
+
+        // Actualizar la interfaz del carrito
+        function updateCartUI() {
+            const container = document.getElementById('cart-items');
+            const countBadge = document.getElementById('cart-count');
+            const subtotalText = document.getElementById('cart-subtotal');
+            const totalText = document.getElementById('cart-total');
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="cart-empty-state">
+                        <i class="fas fa-shopping-basket"></i>
+                        <p>Aún no has agregado productos a tu orden.</p>
+                        <button class="shop-now-btn" onclick="toggleCart()">Explorar Tienda</button>
+                    </div>
+                `;
+                countBadge.innerText = "0";
+                subtotalText.innerText = "$0.00 MXN";
+                totalText.innerText = "$0.00 MXN";
+                return;
+            }
+
+            container.innerHTML = "";
+            let subtotal = 0;
+            let totalItems = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                totalItems += item.quantity;
+
+                container.innerHTML += `
+                    <div class="cart-item">
+                        <img class="cart-item-img" src="${item.img}" alt="${item.name}">
+                        <div class="cart-item-details">
+                            <h4 class="cart-item-name">${item.name}</h4>
+                            <span class="cart-item-price">$${item.price} MXN c/u</span>
+                            <div class="cart-item-quantity-ctrl">
+                                <button class="qty-btn" onclick="changeQuantity(${item.id}, -1)">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <span class="qty-val">${item.quantity}</span>
+                                <button class="qty-btn" onclick="changeQuantity(${item.id}, 1)">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button class="delete-item-btn" onclick="removeFromCart(${item.id})" title="Quitar producto">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                `;
+            });
+
+            countBadge.innerText = totalItems;
+            subtotalText.innerText = `$${subtotal}.00 MXN`;
+            totalText.innerText = `$${subtotal}.00 MXN`;
+        }
+
+        // Checkout y envío del pedido por WhatsApp
+        window.checkout = function() {
+            if (cart.length === 0) return;
+
+            let message = "¡Hola Nectar Organic Farms! 👋\n";
+            message += "Me gustaría realizar un pedido con los siguientes productos orgánicos:\n\n";
+
+            let total = 0;
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                message += `${index + 1}. *${item.name}* (Cant: ${item.quantity}) - $${itemTotal} MXN\n`;
+            });
+
+            message += `\n*Total del Pedido: $${total}.00 MXN*\n\n`;
+            message += "_Por favor, confírmenme disponibilidad para coordinar el envío a domicilio y método de pago. ¡Gracias!_";
+
+            const whatsappUrl = `https://wa.me/525565427022?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
