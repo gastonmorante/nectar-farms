@@ -33,55 +33,23 @@
 </head>
 <body>
 
-    <!-- Pre-loader Screen (Brand Animated SVG) -->
+    <!-- Pre-loader Screen (Plant Growth Intro) -->
     <div id="preloader">
+        <div class="preloader-bg-glow"></div>
         <div class="preloader-content">
-            <svg class="preloader-logo" viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg">
-                <!-- Top Oval Arch -->
-                <path class="top-arch" d="M 20 52 L 80 52 C 80 25, 70 10, 50 10 C 30 10, 20 25, 20 52 Z" />
-                
-                <!-- Bottom Oval (solid fill) -->
-                <path class="bottom-oval" d="M 20 58 L 80 58 C 80 85, 70 100, 50 100 C 30 100, 20 85, 20 58 Z" />
-                
-                <!-- Dashed Line inside Bottom Oval -->
-                <path class="dashed-line" d="M 25 63 C 25 83, 33 94, 50 94 C 67 94, 75 83, 75 63" />
-                
-                <!-- Stems -->
-                <line class="logo-stem-top" x1="50" y1="52" x2="50" y2="25" />
-                <line class="logo-stem-bottom" x1="50" y1="58" x2="50" y2="78" />
-                
-                <!-- Leaves -->
-                <path class="logo-leaf logo-leaf-center" d="M 50 25 C 46 21, 46 14, 50 11 C 54 14, 54 21, 50 25 Z" />
-                <path class="logo-leaf logo-leaf-left" d="M 50 33 C 41 33, 38 23, 46 21 C 48 21, 50 25, 50 33 Z" />
-                <path class="logo-leaf logo-leaf-right" d="M 50 33 C 59 33, 62 23, 54 21 C 52 21, 50 25, 50 33 Z" />
-                
-                <!-- Leaf Veins -->
-                <path class="logo-vein" d="M 50 25 L 50 14" />
-                <path class="logo-vein" d="M 50 33 Q 46 28, 46 23" />
-                <path class="logo-vein" d="M 50 33 Q 54 28, 54 23" />
-                
-                <!-- Dots -->
-                <circle class="logo-dot logo-dot-1" cx="34" cy="30" r="1.5" />
-                <circle class="logo-dot logo-dot-2" cx="32" cy="24" r="1.5" />
-                <circle class="logo-dot logo-dot-3" cx="36" cy="18" r="1.5" />
-                <circle class="logo-dot logo-dot-4" cx="66" cy="30" r="1.5" />
-                <circle class="logo-dot logo-dot-5" cx="68" cy="24" r="1.5" />
-                <circle class="logo-dot logo-dot-6" cx="64" cy="18" r="1.5" />
-                
-                <!-- Roots branches -->
-                <path class="logo-root logo-root-left" d="M 50 63 C 44 65, 38 68, 32 74" />
-                <path class="logo-root logo-root-right" d="M 50 63 C 56 65, 62 68, 68 74" />
-                
-                <line class="logo-root logo-root-sub logo-root-sub-l1" x1="43" y1="66" x2="43" y2="72" />
-                <line class="logo-root logo-root-sub logo-root-sub-l2" x1="37" y1="69" x2="34" y2="74" />
-                <line class="logo-root logo-root-sub logo-root-sub-r1" x1="57" y1="66" x2="57" y2="72" />
-                <line class="logo-root logo-root-sub logo-root-sub-r2" x1="63" y1="69" x2="66" y2="74" />
-                
-                <line class="logo-root logo-root-sub logo-root-bottom-c" x1="50" y1="78" x2="50" y2="86" />
-                <path class="logo-root logo-root-sub logo-root-bottom-l" d="M 50 78 C 47 80, 44 82, 42 85" />
-                <path class="logo-root logo-root-sub logo-root-bottom-r" d="M 50 78 C 53 80, 56 82, 58 85" />
-            </svg>
-            <div class="preloader-text">NECTAR <span>FARMS</span></div>
+            <div class="plant-growth-wrapper">
+                <div class="growth-particles">
+                    <span class="p1"></span><span class="p2"></span><span class="p3"></span><span class="p4"></span><span class="p5"></span>
+                </div>
+                <div class="logo-growth-container">
+                    <img src="logo.png" alt="Nectar Farms" class="official-logo-img">
+                    <div class="logo-shimmer"></div>
+                </div>
+            </div>
+            <div class="preloader-text-wrap">
+                <div class="preloader-text">NECTAR <span>FARMS</span></div>
+                <div class="preloader-tagline">DE LA RAÍZ A LA MESA 🇲🇽</div>
+            </div>
         </div>
     </div>
 
@@ -89,52 +57,7 @@
     <header id="main-header">
         <nav>
             <a href="#" class="logo-container">
-                <!-- Animated SVG Isologo -->
-                <svg class="animated-logo" viewBox="0 0 100 110" width="40" height="44" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Top Oval Arch -->
-                    <path class="top-arch" d="M 20 52 L 80 52 C 80 25, 70 10, 50 10 C 30 10, 20 25, 20 52 Z" />
-                    
-                    <!-- Bottom Oval (solid fill) -->
-                    <path class="bottom-oval" d="M 20 58 L 80 58 C 80 85, 70 100, 50 100 C 30 100, 20 85, 20 58 Z" />
-                    
-                    <!-- Dashed Line inside Bottom Oval -->
-                    <path class="dashed-line" d="M 25 63 C 25 83, 33 94, 50 94 C 67 94, 75 83, 75 63" />
-                    
-                    <!-- Stems -->
-                    <line class="logo-stem-top" x1="50" y1="52" x2="50" y2="25" />
-                    <line class="logo-stem-bottom" x1="50" y1="58" x2="50" y2="78" />
-                    
-                    <!-- Leaves -->
-                    <path class="logo-leaf logo-leaf-center" d="M 50 25 C 46 21, 46 14, 50 11 C 54 14, 54 21, 50 25 Z" />
-                    <path class="logo-leaf logo-leaf-left" d="M 50 33 C 41 33, 38 23, 46 21 C 48 21, 50 25, 50 33 Z" />
-                    <path class="logo-leaf logo-leaf-right" d="M 50 33 C 59 33, 62 23, 54 21 C 52 21, 50 25, 50 33 Z" />
-                    
-                    <!-- Leaf Veins -->
-                    <path class="logo-vein" d="M 50 25 L 50 14" />
-                    <path class="logo-vein" d="M 50 33 Q 46 28, 46 23" />
-                    <path class="logo-vein" d="M 50 33 Q 54 28, 54 23" />
-                    
-                    <!-- Dots -->
-                    <circle class="logo-dot logo-dot-1" cx="34" cy="30" r="1.5" />
-                    <circle class="logo-dot logo-dot-2" cx="32" cy="24" r="1.5" />
-                    <circle class="logo-dot logo-dot-3" cx="36" cy="18" r="1.5" />
-                    <circle class="logo-dot logo-dot-4" cx="66" cy="30" r="1.5" />
-                    <circle class="logo-dot logo-dot-5" cx="68" cy="24" r="1.5" />
-                    <circle class="logo-dot logo-dot-6" cx="64" cy="18" r="1.5" />
-                    
-                    <!-- Roots branches -->
-                    <path class="logo-root logo-root-left" d="M 50 63 C 44 65, 38 68, 32 74" />
-                    <path class="logo-root logo-root-right" d="M 50 63 C 56 65, 62 68, 68 74" />
-                    
-                    <line class="logo-root logo-root-sub logo-root-sub-l1" x1="43" y1="66" x2="43" y2="72" />
-                    <line class="logo-root logo-root-sub logo-root-sub-l2" x1="37" y1="69" x2="34" y2="74" />
-                    <line class="logo-root logo-root-sub logo-root-sub-r1" x1="57" y1="66" x2="57" y2="72" />
-                    <line class="logo-root logo-root-sub logo-root-sub-r2" x1="63" y1="69" x2="66" y2="74" />
-                    
-                    <line class="logo-root logo-root-sub logo-root-bottom-c" x1="50" y1="78" x2="50" y2="86" />
-                    <path class="logo-root logo-root-sub logo-root-bottom-l" d="M 50 78 C 47 80, 44 82, 42 85" />
-                    <path class="logo-root logo-root-sub logo-root-bottom-r" d="M 50 78 C 53 80, 56 82, 58 85" />
-                </svg>
+                <img src="logo.png" alt="Nectar Farms" class="nav-official-logo" style="height: 48px; width: auto; object-fit: contain;">
                 <div class="logo-text">NECTAR <span>FARMS</span></div>
             </a>
             <div class="nav-links">
@@ -158,8 +81,8 @@
     <section class="hero">
         <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=1600&q=80');"></div>
         <div class="hero-content reveal">
-            <h1>Alimentos del campo, cultivados con <em>dedicación</em></h1>
-            <p>Directo del campo sustentable a tu mesa en México. Alimentos vivos, 100% locales y de comercio justo.</p>
+            <h1>En Nectar Farms llevamos lo mejor del campo hasta las <em>mejores cocinas</em> del país</h1>
+            <p>Trabajamos codo a codo con los productores para encontrar en cada rincón de nuestro México esas joyas escondidas que nacen en la tierra, donde la lluvia, el sol y las manos del agricultor, convierten una semilla en un ingrediente extraordinario que rara vez llegan a los grandes mercados.</p>
             <div class="search-container">
                 <i class="fas fa-search search-icon"></i>
                 <input type="text" id="search-input" class="search-input" placeholder="Buscar productos (ej. Miel, Huevo, Café)...">
@@ -635,14 +558,14 @@
         let activeCategory = 'Todos';
         let searchQuery = '';
 
-        // Preloader fade-out al cargar
+        // Preloader Plant Growth intro (espera 5 segundos antes de ingresar a la página)
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
             if (preloader) {
                 setTimeout(() => {
                     preloader.classList.add('fade-out');
-                    setTimeout(() => preloader.remove(), 600);
-                }, 2200); // 2.2s de animación de ciclo de vida del logo
+                    setTimeout(() => preloader.remove(), 900);
+                }, 5000); // 5 segundos exactos de introducción
             }
         });
 
