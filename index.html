@@ -332,6 +332,18 @@
         </div>
     </div>
 
+    <!-- Product Detail Modal (Ficha Técnica / Gastronómica) -->
+    <div class="product-modal-overlay" id="product-modal-overlay" onclick="closeProductModal()">
+        <div class="product-modal" onclick="event.stopPropagation()">
+            <button class="modal-close-btn" onclick="closeProductModal()" aria-label="Cerrar modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-content" id="modal-product-content">
+                <!-- Se llena dinámicamente -->
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="footer-container">
@@ -354,10 +366,9 @@
                 <h4>Categorías</h4>
                 <ul>
                     <li><a href="#" onclick="event.preventDefault(); filterCategory('Todos')">Todos los Productos</a></li>
-                    <li><a href="#" onclick="event.preventDefault(); filterCategory('Despensa')">Despensa</a></li>
-                    <li><a href="#" onclick="event.preventDefault(); filterCategory('Frutas y Verduras')">Frutas y Verduras</a></li>
-                    <li><a href="#" onclick="event.preventDefault(); filterCategory('Lácteos y Huevo')">Lácteos y Huevo</a></li>
-                    <li><a href="#" onclick="event.preventDefault(); filterCategory('Bebidas')">Bebidas</a></li>
+                    <li><a href="#" onclick="event.preventDefault(); filterCategory('Hongos Silvestres')">Hongos Silvestres</a></li>
+                    <li><a href="#" onclick="event.preventDefault(); filterCategory('Frutas Exóticas')">Frutas Exóticas</a></li>
+                    <li><a href="#" onclick="event.preventDefault(); filterCategory('Hojas & Raíces')">Hojas & Raíces</a></li>
                 </ul>
             </div>
         </div>
@@ -369,189 +380,52 @@
 
     <!-- Logic Script -->
     <script>
-        // Catálogo de 20 productos sustentables
-        const products = [
-            { 
-                id: 1, 
-                name: "Miel de Azahar", 
-                category: "Despensa", 
-                price: 180, 
-                unit: "Frasco 300g",
-                desc: "Cruda y multifloral. De floración de cítricos del Bajío mexicano, 100% pura y sin filtrar.", 
-                img: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=400&q=80" 
-            },
-            { 
-                id: 2, 
-                name: "Huevo de Pastoreo (12 pzas)", 
-                category: "Lácteos y Huevo", 
-                price: 85, 
-                unit: "Caja de 12 pzas",
-                desc: "Huevo de libre pastoreo. Gallinas alimentadas con granos naturales sin antibióticos ni hormonas.", 
-                img: "https://images.unsplash.com/photo-1516448620398-c5f44bf9f443?auto=format&fit=crop&w=400&q=80" 
-            },
-            { 
-                id: 3, 
-                name: "Aguacate Hass (1kg)", 
-                category: "Frutas y Verduras", 
-                price: 95, 
-                unit: "Aprox. 4-5 piezas",
-                desc: "Aguacate Hass cremoso y rico en grasas saludables, cosechado a mano en Michoacán.", 
-                img: "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&w=400&q=80" 
-            },
-            { 
-                id: 4, 
-                name: "Café de Especialidad (250g)", 
-                category: "Despensa", 
-                price: 220, 
-                unit: "Bolsa en Grano o Molido",
-                desc: "Café arábica de altura cultivado bajo sombra en Chiapas. Notas a chocolate y avellana.", 
-                img: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=400&q=80" 
-            },
-            { 
-                id: 5, 
-                name: "Kombucha Jengibre (355ml)", 
-                category: "Bebidas", 
-                price: 65, 
-                unit: "Botella de vidrio",
-                desc: "Bebida fermentada burbujeante a base de té negro con jengibre fresco. Probióticos naturales.", 
-                img: "https://images.unsplash.com/photo-1558160074-4d7d8bdf4256?auto=format&fit=crop&w=400&q=80" 
-            },
-            { 
-                id: 6, 
-                name: "Jitomate Saladet (1kg)", 
-                category: "Frutas y Verduras", 
-                price: 45, 
-                unit: "Bolsa compostable 1kg",
-                desc: "Jitomate jugoso y madurado en planta, cultivado bajo agricultura protegida libre de pesticidas.", 
-                img: "https://images.unsplash.com/photo-1595855759920-86582396756a?auto=format&fit=crop&w=400&q=80" 
-            },
-            { 
-                id: 7, 
-                name: "Fresa Fresca (500g)", 
-                category: "Frutas y Verduras", 
-                price: 75, 
-                unit: "Domo compostable",
-                desc: "Fresas dulces cosechadas al punto óptimo sin químicos sintéticos en Guanajuato.", 
-                img: "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=400&q=80" 
-            },
-            { 
-                id: 8, 
-                name: "Queso de Cabra Artesanal (200g)", 
-                category: "Lácteos y Huevo", 
-                price: 110, 
-                unit: "Pieza envuelta",
-                desc: "Queso madurado de cabra con fina costra de ceniza vegetal. Cremoso y de sabor balanceado.", 
-                img: "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=400&q=80" 
-            },
-            { 
-                id: 9, 
-                name: "Espinaca (Manojo)", 
-                category: "Frutas y Verduras", 
-                price: 30, 
-                unit: "Manojo de hojas frescas",
-                desc: "Hojas de espinaca tiernas y crujientes. Cosechadas a primera hora de la mañana para máxima frescura.", 
-                img: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=400&q=80" 
-            },
-            { 
-                id: 10, 
-                name: "Aceite de Oliva Extra Virgen (500ml)", 
-                category: "Despensa", 
-                price: 240, 
-                unit: "Botella de vidrio oscuro",
-                desc: "Aceite de primera prensa fría artesanal de Ensenada, Baja California. Sabor ligeramente frutado.", 
-                img: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=400&q=80" 
-            },
-            { 
-                id: 11, 
-                name: "Tortillas de Maíz Criollo (1kg)", 
-                category: "Despensa", 
-                price: 40, 
-                unit: "Paquete envuelto en papel",
-                desc: "Tortillas hechas a mano con maíz nativo nixtamalizado de pequeños productores locales.", 
-                img: "https://images.unsplash.com/photo-1624462966581-bc6d768cbce5?auto=format&fit=crop&w=400&q=80" 
-            },
-            { 
-                id: 12, 
-                name: "Chocolate de Mesa Artesanal (250g)", 
-                category: "Despensa", 
-                price: 90, 
-                unit: "Tableta redonda",
-                desc: "Chocolate tradicional oaxaqueño molido en piedra con cacao de aroma fino y toque de canela.", 
-                img: "https://images.unsplash.com/photo-1548907040-4d42b52115ca?auto=format&fit=crop&w=400&q=80" 
-            },
-            { 
-                id: 13, 
-                name: "Plátano Tabasco (1kg)", 
-                category: "Frutas y Verduras", 
-                price: 35, 
-                unit: "Penca aprox. 5-7 piezas",
-                desc: "Plátanos Tabasco dulces y cremosos de plantaciones sustentables en Chiapas.", 
-                img: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=400&q=80" 
-            },
-            { 
-                id: 14, 
-                name: "Limón Colima con Semilla (1kg)", 
-                category: "Frutas y Verduras", 
-                price: 48, 
-                unit: "Aprox. 12-15 piezas",
-                desc: "Limones jugosos de alta acidez natural cosechados sustentablemente en Colima.", 
-                img: "https://images.unsplash.com/photo-1590502593747-42a996133562?auto=format&fit=crop&w=400&q=80" 
-            },
-            { 
-                id: 15, 
-                name: "Pan de Masa Madre Rústico", 
-                category: "Despensa", 
-                price: 85, 
-                unit: "Hogaza 600g",
-                desc: "Pan rústico de fermentación lenta de 24 horas. Crujiente por fuera, alveolado y suave por dentro.", 
-                img: "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=400&q=80" 
-            },
-            { 
-                id: 16, 
-                name: "Manzana Gala (1kg)", 
-                category: "Frutas y Verduras", 
-                price: 65, 
-                unit: "Aprox. 5-6 piezas",
-                desc: "Manzana Gala dulce y crujiente, directa de huertos sustentables de Chihuahua.", 
-                img: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=400&q=80" 
-            },
-            { 
-                id: 17, 
-                name: "Granola Rústica con Semillas (500g)", 
-                category: "Despensa", 
-                price: 95, 
-                unit: "Bolsa Kraft resellable",
-                desc: "Avena tostada con miel pura, semillas de calabaza, girasol, nueces de la India y arándanos.", 
-                img: "https://images.unsplash.com/photo-1517881917430-e70dfb3610aa?auto=format&fit=crop&w=400&q=80" 
-            },
-            { 
-                id: 18, 
-                name: "Té Verde Matcha Ceremonial (50g)", 
-                category: "Bebidas", 
-                price: 320, 
-                unit: "Lata metálica hermética",
-                desc: "Matcha japonés grado ceremonial premium. Gran poder antioxidante y enfoque mental.", 
-                img: "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=400&q=80" 
-            },
-            { 
-                id: 19, 
-                name: "Flor de Sal de Cuyutlán (500g)", 
-                category: "Despensa", 
-                price: 55, 
-                unit: "Bolsa de yute interior Kraft",
-                desc: "Sal de mar pura libre de microplásticos y químicos, recolectada a mano en Colima.", 
-                img: "https://images.unsplash.com/photo-1613149586174-850d0322d86f?auto=format&fit=crop&w=400&q=80" 
-            },
-            { 
-                id: 20, 
-                name: "Mantequilla de Rancho (250g)", 
-                category: "Lácteos y Huevo", 
-                price: 70, 
-                unit: "Barra envuelta en papel encerado",
-                desc: "Mantequilla batida tradicional a partir de crema de leche fresca entera de vacas libres.", 
-                img: "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=400&q=80" 
-            }
+        // Catálogo oficial de 20 productos de Nectar Farms
+        const productos = [
+          { id: 1, name: "Porcini", sci: "Boletus sp.", temp: "Julio - Septiembre", origin: "Bosques del Altiplano Central", desc: "Hongo silvestre de sabor terroso y a nuez profunda, con una textura carnosa sumamente codiciada en salsas y risottos de alta cocina.", img: "https://images.unsplash.com/photo-1634045542718-45be5d36b802?auto=format&fit=crop&q=80&w=400" },
+          { id: 2, name: "Lobster", sci: "Hypomyces lactifluorum", temp: "Agosto - Octubre", origin: "Bosques de Michoacán", desc: "Hongo silvestre parasitado de un llamativo color naranja brillante. Ofrece un sutil aroma que evoca mariscos y una textura firme muy crujiente.", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=400" },
+          { id: 3, name: "Hongo Azul", sci: "Lactarius indigo", temp: "Julio - Septiembre", origin: "Sierras de Hidalgo", desc: "Una joya visual de color añil metálico. Posee un sabor suave y terroso con láminas firmes que mantienen su color azul único al cocinarse.", img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&q=80&w=400" },
+          { id: 4, name: "Duraznillo", sci: "Cantharellus cibarius", temp: "Julio - Septiembre", origin: "Sierra de Oaxaca", desc: "Sabor sutilmente afrutado que recuerda al chabacano. Su hermoso color amarillo dorado y textura elástica lo hacen el preferido de los chefs.", img: "https://images.unsplash.com/photo-1610444585141-8f5b89eb0df6?auto=format&fit=crop&q=80&w=400" },
+          { id: 5, name: "Rovellón", sci: "Lactarius deliciosus", temp: "Otoño (Octubre - Noviembre)", origin: "Bosques templados del centro", desc: "Hongo de color naranja encendido con círculos concéntricos. Textura muy consistente y un sabor umami profundo con notas ligeramente picantes.", img: "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&q=80&w=400" },
+          { id: 6, name: "Clavito", sci: "Lyophyllum decastes", temp: "Agosto - Septiembre", origin: "Sierra de Toluca", desc: "Crece en densos racimos. Su textura es excepcionalmente firme y elástica, lo que lo hace perfecto para guisos y braseados de cocción larga.", img: "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?auto=format&fit=crop&q=80&w=400" },
+          { id: 7, name: "Tecomate", sci: "Amanita caesarea", temp: "Junio - Septiembre", origin: "Bosques húmedos de México", desc: "El hongo de los césares. Sombrero naranja brillante y láminas amarillas. Sabor dulce, delicado y ligeramente almendrado, ideal crudo en carpaccio.", img: "https://images.unsplash.com/photo-1594911774802-8822a707cbb3?auto=format&fit=crop&q=80&w=400" },
+          { id: 8, name: "Mantecado", sci: "Amanita rubescens", temp: "Julio - Septiembre", origin: "Bosques templados de pino", desc: "Hongo de sombrero pardo que enrojece al corte. Ofrece una textura mantecosa tras la cocción y un rico perfil de sabor que recuerda a frutos secos.", img: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&q=80&w=400" },
+          { id: 9, name: "Hongo Coral", sci: "Ramaria sp.", temp: "Julio - Septiembre", origin: "Zonas montañosas de México", desc: "Hermosa estructura ramificada que recuerda a un coral marino. Textura tierna con puntas ligeramente crujientes, de sabor suave y terroso.", img: "https://images.unsplash.com/photo-1628359419163-e380f6813e33?auto=format&fit=crop&q=80&w=400" },
+          { id: 10, name: "Morilla", sci: "Morchella sp.", temp: "Primavera (Marzo - Mayo)", origin: "Faldas de los volcanes de México", desc: "Estructura alveolar icónica. Posee un sabor sumamente complejo, terroso y ahumado. Es considerado el hongo rey para salsas y reducciones.", img: "https://images.unsplash.com/photo-1629814479904-80340c2627cb?auto=format&fit=crop&q=80&w=400" },
+          { id: 11, name: "Matsutake", sci: "Tricholoma magnivelare", temp: "Septiembre - Noviembre", origin: "Bosques de Oaxaca", desc: "Altamente valorado por su aroma especiado inigualable con notas a canela y pino. Sabor intenso, textura masticable y gran presencia en el plato.", img: "https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&q=80&w=400" },
+          { id: 12, name: "Anonna San Pablo", sci: "Annona reticulata", temp: "Invierno - Primavera", origin: "Huertos de Yucatán", desc: "Fruta exótica de piel reticulada y pulpa cremosa de dulzura sutil y matices ácidos, excelente para la elaboración de sorbetes y postres helados.", img: "https://images.unsplash.com/photo-1588691334812-bf9dd9d1877f?auto=format&fit=crop&q=80&w=400" },
+          { id: 13, name: "Saramuyo", sci: "Annona squamosa", temp: "Julio - Octubre", origin: "Zonas tropicales de Yucatán", desc: "Conocida como manzana de azúcar. Su pulpa segmentada es sumamente dulce, aromática y de textura tersa, ideal para creaciones de repostería fina.", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&q=80&w=400" },
+          { id: 14, name: "Hongos de Recolección", sci: "Boletus / Amanita sp.", temp: "Temporada de lluvias", origin: "Bosques y valles de México", desc: "Una selección artesanal de hongos silvestres frescos recolectados a mano por expertos locales, que captura la biodiversidad de la temporada.", img: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&q=80&w=400" },
+          { id: 15, name: "Naranja Sangría", sci: "Citrus sinensis var. Sangria", temp: "Noviembre - Febrero", origin: "Huertos cítricos de Yucatán", desc: "Variedad de naranja de pulpa rojiza debido a antioxidantes naturales. Ofrece un sabor dulce y complejo con notas a frambuesa, ideal para mixología.", img: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&q=80&w=400" },
+          { id: 16, name: "Manzana Pearly Pink", sci: "Malus domestica", temp: "Otoño", origin: "Cultivos seleccionados", desc: "Manzana de piel aperlada rosada y pulpa sumamente crujiente, con un balance perfecto entre una acidez refrescante y notas dulces.", img: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&q=80&w=400" },
+          { id: 17, name: "Kaniste", sci: "Pouteria campechana", temp: "Diciembre - Marzo", origin: "Península de Yucatán", desc: "Fruta de pulpa amarilla densa y cremosa que recuerda a la yema de huevo o al camote dulce. Sabor exótico, dulce y untuoso al paladar.", img: "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?auto=format&fit=crop&q=80&w=400" },
+          { id: 18, name: "Mix de Mostazas", sci: "Brassica juncea", temp: "Todo el año", origin: "Huertos verticales Nectar", desc: "Mezcla de hojas jóvenes de mostaza (Miz america, fresse y ruby streaks) con colores morados y verdes y un perfil de sabor picante.", img: "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&q=80&w=400" },
+          { id: 19, name: "Ube", sci: "Dioscorea purpurea", temp: "Otoño - Invierno", origin: "Invernaderos NectarCore", desc: "Tubérculo de un color púrpura vibrante. Textura suave al cocer y sabor dulce con sutiles notas a vainilla, muy cotizado en repostería estética.", img: "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&q=80&w=400" },
+          { id: 20, name: "Espinaca de Okinawa", sci: "Gynura bicolor", temp: "Todo el año", origin: "Cultivo hidropónico Nectar", desc: "Hojas bicolor excepcionales (verdes en el haz y morado intenso en el envés). Aporte estético único con un sabor herbal y notas a piñón.", img: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&q=80&w=400" }
         ];
+
+        const products = productos; // Alias para máxima compatibilidad
+
+        // Clasificación de categorías botánicas
+        function getProductCategory(p) {
+            const name = p.name.toLowerCase();
+            const sci = (p.sci || '').toLowerCase();
+            if (sci.includes('boletus') || sci.includes('hypomyces') || sci.includes('lactarius') || 
+                sci.includes('cantharellus') || sci.includes('lyophyllum') || sci.includes('amanita') || 
+                sci.includes('ramaria') || sci.includes('morchella') || sci.includes('tricholoma') || 
+                name.includes('hongo') || name.includes('porcini') || name.includes('lobster') || 
+                name.includes('morilla') || name.includes('matsutake') || name.includes('tecomate') ||
+                name.includes('duraznillo') || name.includes('rovellón') || name.includes('clavito') ||
+                name.includes('mantecado')) {
+                return 'Hongos Silvestres';
+            }
+            if (sci.includes('annona') || sci.includes('citrus') || sci.includes('malus') || 
+                sci.includes('pouteria') || name.includes('anonna') || name.includes('saramuyo') || 
+                name.includes('naranja') || name.includes('manzana') || name.includes('kaniste')) {
+                return 'Frutas Exóticas';
+            }
+            return 'Hojas & Raíces';
+        }
 
         // Estado del Carrito y Filtros
         let cart = [];
@@ -579,10 +453,12 @@
 
             // Escuchar barra de búsqueda
             const searchInput = document.getElementById('search-input');
-            searchInput.addEventListener('input', (e) => {
-                searchQuery = e.target.value.toLowerCase().trim();
-                renderProducts();
-            });
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    searchQuery = e.target.value.toLowerCase().trim();
+                    renderProducts();
+                });
+            }
 
             // Parallax scroll y scrolled state del header
             window.addEventListener('scroll', () => {
@@ -596,10 +472,12 @@
 
                 // Cambiar opacidad del Header
                 const header = document.getElementById('main-header');
-                if (scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
+                if (header) {
+                    if (scrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
                 }
             });
         });
@@ -619,16 +497,13 @@
 
         // Categorías únicas
         function getCategories() {
-            const cats = ['Todos'];
-            products.forEach(p => {
-                if (!cats.includes(p.category)) { cats.push(p.category); }
-            });
-            return cats;
+            return ['Todos', 'Hongos Silvestres', 'Frutas Exóticas', 'Hojas & Raíces'];
         }
 
         // Renderizar botones de filtro
         function renderCategories() {
             const container = document.getElementById('categories-container');
+            if (!container) return;
             const categories = getCategories();
             
             container.innerHTML = categories.map(cat => `
@@ -646,7 +521,10 @@
             activeCategory = category;
             renderCategories();
             renderProducts();
-            document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth' });
+            const catalogSection = document.getElementById('catalogo');
+            if (catalogSection) {
+                catalogSection.scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
         function updateActiveCategoryIndicator() {
@@ -663,13 +541,17 @@
         // Renderizar lista de productos
         function renderProducts() {
             const grid = document.getElementById('product-grid');
+            if (!grid) return;
             grid.innerHTML = "";
 
-            const filtered = products.filter(p => {
-                const matchesCategory = (activeCategory === 'Todos' || p.category === activeCategory);
+            const filtered = productos.filter(p => {
+                const cat = getProductCategory(p);
+                const matchesCategory = (activeCategory === 'Todos' || cat === activeCategory);
                 const matchesSearch = p.name.toLowerCase().includes(searchQuery) || 
                                       p.desc.toLowerCase().includes(searchQuery) ||
-                                      p.category.toLowerCase().includes(searchQuery);
+                                      (p.sci && p.sci.toLowerCase().includes(searchQuery)) ||
+                                      (p.origin && p.origin.toLowerCase().includes(searchQuery)) ||
+                                      (p.temp && p.temp.toLowerCase().includes(searchQuery));
                 return matchesCategory && matchesSearch;
             });
 
@@ -686,20 +568,22 @@
 
             filtered.forEach(p => {
                 grid.innerHTML += `
-                    <div class="product-card">
-                        <span class="product-badge">${p.category}</span>
+                    <div class="product-card" onclick="openProductModal(${p.id})">
+                        <span class="product-badge">${p.temp}</span>
                         <div class="img-container">
                             <img class="product-img" src="${p.img}" alt="${p.name}" loading="lazy">
                         </div>
                         <div class="product-info">
+                            <span class="product-sci"><em>${p.sci}</em></span>
                             <h3 class="product-name">${p.name}</h3>
+                            <div class="product-origin"><i class="fas fa-map-marker-alt"></i> ${p.origin}</div>
                             <p class="product-desc">${p.desc}</p>
                             <div class="product-footer">
                                 <div class="price-container">
-                                    <span class="price-label">${p.unit}</span>
-                                    <span class="price-val">$${p.price} MXN</span>
+                                    <span class="price-label">Temporada</span>
+                                    <span class="product-temp-val" title="${p.temp}">${p.temp}</span>
                                 </div>
-                                <button class="add-to-cart-btn" onclick="addToCart(${p.id})" title="Agregar al pedido">
+                                <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(${p.id})" title="Agregar a mi selección">
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
@@ -708,6 +592,62 @@
                 `;
             });
         }
+
+        // Modal Informativo de Producto
+        window.openProductModal = function(id) {
+            const p = productos.find(item => item.id === id);
+            if (!p) return;
+
+            const modalContent = document.getElementById('modal-product-content');
+            const overlay = document.getElementById('product-modal-overlay');
+            const cat = getProductCategory(p);
+
+            modalContent.innerHTML = `
+                <div class="modal-grid">
+                    <div class="modal-img-wrap">
+                        <img src="${p.img}" alt="${p.name}">
+                    </div>
+                    <div class="modal-details">
+                        <span class="modal-badge"><i class="fas fa-seedling"></i> ${cat}</span>
+                        <h2 class="modal-title">${p.name}</h2>
+                        <div class="modal-sci"><em>${p.sci}</em></div>
+                        <div class="modal-meta-row">
+                            <div class="modal-meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span><strong>Origen:</strong> ${p.origin}</span>
+                            </div>
+                            <div class="modal-meta-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span><strong>Temporada:</strong> ${p.temp}</span>
+                            </div>
+                        </div>
+                        <p class="modal-desc">${p.desc}</p>
+                        <div class="modal-actions">
+                            <a href="https://wa.me/525565427022?text=${encodeURIComponent('¡Hola Nectar Farms! 👋 Me gustaría consultar disponibilidad del producto: ' + p.name + ' (' + p.sci + ') recolectado en ' + p.origin)}" 
+                               target="_blank" rel="noopener noreferrer" class="modal-whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i> Consultar Disponibilidad
+                            </a>
+                            <button class="modal-cart-btn" onclick="addToCart(${p.id}); closeProductModal();">
+                                <i class="fas fa-plus"></i> Agregar a Lista
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            overlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        window.closeProductModal = function() {
+            const overlay = document.getElementById('product-modal-overlay');
+            if (overlay) overlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeProductModal();
+        });
 
         // Animación Scroll Reveal con IntersectionObserver
         function initScrollReveal() {
@@ -743,6 +683,7 @@
         // Mostrar Toast Notification
         function showToast(message) {
             const container = document.getElementById('toast-container');
+            if (!container) return;
             const toast = document.createElement('div');
             toast.className = 'toast';
             toast.innerHTML = `<i class="fas fa-check-circle" style="color:var(--accent);"></i> <span>${message}</span>`;
@@ -758,13 +699,15 @@
 
         // Alternar el carrito
         window.toggleCart = function() {
-            document.getElementById('cart-drawer').classList.toggle('open');
-            document.getElementById('cart-overlay').classList.toggle('open');
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-overlay');
+            if (drawer) drawer.classList.toggle('open');
+            if (overlay) overlay.classList.toggle('open');
         }
 
         // Agregar un producto al carrito
         window.addToCart = function(id) {
-            const product = products.find(p => p.id === id);
+            const product = productos.find(p => p.id === id);
             if (!product) return;
 
             const existingItem = cart.find(item => item.id === id);
@@ -780,11 +723,11 @@
 
             saveCartToStorage();
             updateCartUI();
-            triggerCartBounce(); // Ejecutar animación de salto elástico
-            showToast(`${product.name} agregado al pedido`);
+            triggerCartBounce();
+            showToast(`${product.name} agregado a tu lista`);
 
             const drawer = document.getElementById('cart-drawer');
-            if (!drawer.classList.contains('open')) {
+            if (drawer && !drawer.classList.contains('open')) {
                 toggleCart();
             }
         }
@@ -798,7 +741,7 @@
 
             if (item.quantity <= 0) {
                 cart = cart.filter(x => x.id !== id);
-                showToast("Producto eliminado del pedido");
+                showToast("Producto eliminado de tu lista");
             }
 
             saveCartToStorage();
@@ -815,7 +758,7 @@
             saveCartToStorage();
             updateCartUI();
             triggerCartBounce();
-            showToast(`${item.name} eliminado del pedido`);
+            showToast(`${item.name} eliminado de la lista`);
         }
 
         // Actualizar la interfaz del carrito
@@ -825,27 +768,26 @@
             const subtotalText = document.getElementById('cart-subtotal');
             const totalText = document.getElementById('cart-total');
 
+            if (!container || !countBadge) return;
+
             if (cart.length === 0) {
                 container.innerHTML = `
                     <div class="cart-empty-state">
                         <i class="fas fa-shopping-basket"></i>
                         <p>Aún no has agregado productos a tu orden.</p>
-                        <button class="shop-now-btn" onclick="toggleCart()">Explorar Tienda</button>
+                        <button class="shop-now-btn" onclick="toggleCart()">Explorar Catálogo</button>
                     </div>
                 `;
                 countBadge.innerText = "0";
-                subtotalText.innerText = "$0.00 MXN";
-                totalText.innerText = "$0.00 MXN";
+                if (subtotalText) subtotalText.innerText = "Cotización directa";
+                if (totalText) totalText.innerText = "Por WhatsApp";
                 return;
             }
 
             container.innerHTML = "";
-            let subtotal = 0;
             let totalItems = 0;
 
             cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                subtotal += itemTotal;
                 totalItems += item.quantity;
 
                 container.innerHTML += `
@@ -853,7 +795,8 @@
                         <img class="cart-item-img" src="${item.img}" alt="${item.name}">
                         <div class="cart-item-details">
                             <h4 class="cart-item-name">${item.name}</h4>
-                            <span class="cart-item-price">$${item.price} MXN c/u</span>
+                            <span class="cart-item-price" style="font-style: italic; font-size: 0.75rem; color: var(--accent);">${item.sci || ''}</span>
+                            <span class="cart-item-origin" style="font-size: 0.72rem; color: var(--text-muted); display: block; margin-top: 2px;">📍 ${item.origin || ''}</span>
                             <div class="cart-item-quantity-ctrl">
                                 <button class="qty-btn" onclick="changeQuantity(${item.id}, -1)">
                                     <i class="fas fa-minus"></i>
@@ -872,8 +815,8 @@
             });
 
             countBadge.innerText = totalItems;
-            subtotalText.innerText = `$${subtotal}.00 MXN`;
-            totalText.innerText = `$${subtotal}.00 MXN`;
+            if (subtotalText) subtotalText.innerText = `${totalItems} producto(s)`;
+            if (totalText) totalText.innerText = "Cotización WhatsApp";
         }
 
         // Checkout y envío del pedido por WhatsApp
@@ -881,17 +824,16 @@
             if (cart.length === 0) return;
 
             let message = "¡Hola Nectar Farms! 👋\n";
-            message += "Me gustaría realizar un pedido con los siguientes productos:\n\n";
+            message += "Me gustaría solicitar cotización y consultar disponibilidad de los siguientes ingredientes extraordinarios:\n\n";
 
-            let total = 0;
             cart.forEach((item, index) => {
-                const itemTotal = item.price * item.quantity;
-                total += itemTotal;
-                message += `${index + 1}. *${item.name}* (Cant: ${item.quantity}) - $${itemTotal} MXN\n`;
+                message += `${index + 1}. *${item.name}* (_${item.sci}_)\n`;
+                message += `   • Cantidad seleccionada: ${item.quantity}\n`;
+                message += `   • Origen: ${item.origin}\n`;
+                message += `   • Temporada: ${item.temp}\n\n`;
             });
 
-            message += `\n*Total del Pedido: $${total}.00 MXN*\n\n`;
-            message += "_Por favor, confírmenme disponibilidad para coordinar el envío a domicilio y método de pago. ¡Gracias!_";
+            message += "_Por favor, confírmenme disponibilidad para coordinar la entrega en restaurante/cocina. ¡Muchas gracias!_";
 
             const whatsappUrl = `https://wa.me/525565427022?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
@@ -902,7 +844,8 @@
         // ==========================================================================
         
         window.toggleAIChat = function() {
-            document.getElementById('ai-chat-widget').classList.toggle('open');
+            const chatWidget = document.getElementById('ai-chat-widget');
+            if (chatWidget) chatWidget.classList.toggle('open');
         }
 
         window.handleChatKeypress = function(e) {
@@ -911,26 +854,11 @@
 
         window.sendSuggestion = function(text) {
             const cleanText = text.replace(/^[^\wáéíóúÁÉÍÓÚ]*/, '');
-            document.getElementById('chat-input').value = cleanText;
-            sendChatMessage();
-        }
-
-        window.addRecipeIngredients = function() {
-            addToCart(15); // Pan
-            addToCart(2);  // Huevo
-            addToCart(3);  // Aguacate
-            
-            const body = document.getElementById('chat-body');
-            const msgHtml = `
-                <div class="chat-msg bot">
-                    <div class="chat-bubble">
-                        ¡Listo! He añadido **Pan de Masa Madre**, **Huevo de Pastoreo (12 pzas)** y **Aguacate Hass (1kg)** a tu carrito. ¡Ya puedes revisar tu pedido en el carrito! 🥑🍳🍞
-                    </div>
-                    <div class="chat-time">${getCurrentTime()}</div>
-                </div>
-            `;
-            body.insertAdjacentHTML('beforeend', msgHtml);
-            body.scrollTop = body.scrollHeight;
+            const input = document.getElementById('chat-input');
+            if (input) {
+                input.value = cleanText;
+                sendChatMessage();
+            }
         }
 
         function getCurrentTime() {
@@ -940,6 +868,7 @@
 
         window.sendChatMessage = function() {
             const input = document.getElementById('chat-input');
+            if (!input) return;
             const text = input.value.trim();
             if (!text) return;
 
@@ -1001,42 +930,39 @@
         function generateAIResponse(text) {
             let res = { text: "", actionButton: null };
 
-            if (text.includes('receta') || text.includes('cocinar') || text.includes('desayuno') || text.includes('sugerencia')) {
-                res.text = "¡Excelente elección! Como tu asistente Gemini, te recomiendo preparar un **Desayuno del Campo**. Una combinación perfecta y nutritiva con productos frescos de Nectar Farms:<br><br>" +
-                           "🍳 **Huevos revueltos con Aguacate sobre Pan de Masa Madre**:<br>" +
-                           "1. Tuesta una rebanada de Pan de Masa Madre Rústico.<br>" +
-                           "2. Prepara 2 Huevos de Pastoreo al gusto.<br>" +
-                           "3. Añade rebanadas de Aguacate Hass fresco encima.<br><br>" +
-                           "¿Te gustaría agregar todos los ingredientes de esta receta a tu carrito?";
-                res.actionButton = `<button class="chat-recipe-btn" onclick="addRecipeIngredients()"><i class="fas fa-shopping-cart"></i> Agregar ingredientes ($265 MXN)</button>`;
+            if (text.includes('receta') || text.includes('cocinar') || text.includes('hongo') || text.includes('sugerencia') || text.includes('menu')) {
+                res.text = "¡Una excelente elección para alta cocina! En Nectar Farms contamos con hongos silvestres de recolección única:<br><br>" +
+                           "🍄 **Risotto de Porcini y Morillas Silvestres**:<br>" +
+                           "• *Porcini (Boletus sp.)* del Altiplano Central.<br>" +
+                           "• *Morilla (Morchella sp.)* de las faldas volcánicas.<br>" +
+                           "• Toque de mantequilla de rancho y tomillo fresco.<br><br>" +
+                           "¿Te gustaría consultar disponibilidad de estos hongos silvestres?";
             } 
             else if (text.includes('pago') || text.includes('entrega') || text.includes('envio') || text.includes('cómo') || text.includes('comprar')) {
-                res.text = "¡Es muy sencillo! El flujo de compra funciona de la siguiente manera:<br><br>" +
-                           "1. **Agrega** los productos que desees al carrito.<br>" +
-                           "2. Abre el carrito y haz clic en **Enviar pedido a WhatsApp**.<br>" +
-                           "3. Se enviará un mensaje pre-llenado con tu orden directamente a nuestro equipo.<br>" +
-                           "4. Por WhatsApp te confirmaremos disponibilidad, coordinaremos el **envío a domicilio** y te daremos los datos de **pago por transferencia (SPEI) o efectivo contra entrega**.";
+                res.text = "¡Es muy sencillo! El flujo de compra y cotización gastronómica funciona así:<br><br>" +
+                           "1. **Explora** nuestro catálogo de 20 joyas silvestres y botánicas.<br>" +
+                           "2. Haz clic en **Ver Ficha** para revisar temporada y origen.<br>" +
+                           "3. Envía tu selección a **WhatsApp** para coordinar entrega directa a tu cocina o restaurante en México.";
             } 
-            else if (text.includes('origen') || text.includes('dónde') || text.includes('donde') || text.includes('mexic') || text.includes('local')) {
-                res.text = "En Nectar Farms estamos comprometidos con el comercio local y sustentable. Todos nuestros productos provienen de **pequeños productores mexicanos**:<br><br>" +
-                           "🥑 **Aguacates**: Huertos certificados en Uruapan, Michoacán.<br>" +
-                           "🍯 **Miel de Azahar**: Floraciones de cítricos en el Bajío.<br>" +
-                           "☕ **Café**: Cultivo bajo sombra en la biosfera de Chiapas.<br>" +
-                           "🧀 **Queso de Cabra**: Elaboración artesanal en Querétaro.<br><br>" +
-                           "¡Ninguno de nuestros productos proviene de corporaciones ni intermediarios!";
+            else if (text.includes('origen') || text.includes('dónde') || text.includes('donde') || text.includes('mexic') || text.includes('recoleccion')) {
+                res.text = "Nuestros productos son recolectados y cultivados en ecosistemas privilegiados de México:<br><br>" +
+                           "🌲 **Bosques de Michoacán y Oaxaca**: Lobster, Matsutake y Duraznillo.<br>" +
+                           "⛰️ **Altiplano Central e Hidalgo**: Porcini, Hongo Azul y Clavito.<br>" +
+                           "🌴 **Yucatán**: Frutas exóticas como Saramuyo, Anonna San Pablo y Kaniste.<br><br>" +
+                           "¡Cada lote respeta los ciclos naturales y la recolección sustentable!";
             } 
             else if (text.includes('hola') || text.includes('buen') || text.includes('saludo')) {
-                res.text = "¡Hola! Qué gusto saludarte. Soy el asistente inteligente de Nectar Farms alimentado por **Gemini**. ¿En qué puedo ayudarte hoy? Te puedo sugerir recetas, contarte el origen de nuestros productos o explicarte el proceso de compra.";
+                res.text = "¡Hola! Qué gusto saludarte. Soy el asistente inteligente de Nectar Farms. ¿Deseas conocer la temporada de nuestros hongos silvestres o explorar frutas exóticas de temporada?";
             } 
             else if (text.includes('gracias') || text.includes('ok') || text.includes('perfecto')) {
-                res.text = "¡De nada! Es un placer ayudarte. Si necesitas algo más, solo escríbeme. ¡Que disfrutes de la frescura de Nectar Farms! 🌿";
+                res.text = "¡De nada! Es un placer atenderte. Si necesitas cotizar un lote especial para tu menú, estamos a tus órdenes por WhatsApp. 🌿";
             }
             else {
-                res.text = "¡Qué interesante pregunta! Como tu asistente Gemini, estoy aquí para guiarte en Nectar Farms. Te recomiendo preguntar sobre:<br><br>" +
-                           "• 🥣 *Sugerencias de recetas saludables* (puedes agregar los ingredientes en un clic).<br>" +
-                           "• 🥑 *El origen de nuestros productos*.<br>" +
-                           "• 💳 *El método de pago y entrega*.<br><br>" +
-                           "¿Te gustaría probar una receta con Pan de Masa Madre, Huevo y Aguacate?";
+                res.text = "¡Bienvenido a Nectar Farms! Como tu asistente Gemini, puedo ayudarte con:<br><br>" +
+                           "• 🍄 *Temporada de hongos silvestres (Porcini, Lobster, Morilla, Matsutake)*.<br>" +
+                           "• 🥭 *Frutas exóticas mexicanas (Saramuyo, Kaniste, Naranja Sangría)*.<br>" +
+                           "• 🚚 *Logística y entregas a restaurantes*.<br><br>" +
+                           "¿Sobre qué ingrediente te gustaría conocer más?";
             }
 
             return res;
