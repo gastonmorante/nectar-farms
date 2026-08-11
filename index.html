@@ -842,8 +842,141 @@
         }
 
         // ==========================================================================
-        // Lógica del Asistente IA Gemini Chat
+        // Lógica del Asistente IA "Chano" (Sommelier & Asesor Botánico Nectar Farms)
         // ==========================================================================
+        
+        let conversationHistory = [
+          {
+            role: "user",
+            parts: [{
+              text: `Eres "Chano", el agente de ventas experto, sommelier gastronómico y asesor botánico de Nectar Farms. Tu personalidad es sumamente culta, elegante, apasionada por la agricultura regenerativa y empática con los chefs de alta cocina y directores de alimentos y bebidas.
+
+          **TUS TRES PILARES DE ACCIÓN:**
+          1. **Conocimiento Absoluto:** Eres un experto en las propiedades de sabor, temporada, origen, usos medicinales y sugerencias de recetas de nuestros 20 productos estrella.
+          2. **Vendedor Consultor:** No vendes de forma agresiva. Asesoras, inspiras y despiertas el deseo culinario del chef con propuestas de recetas que elevarán su menú.
+          3. **Conversión Rigurosa (Meta Máxima):** Tu fin último es registrar al usuario como lead. Tan pronto como el cliente muestre interés, ofrécele enviarle el catálogo de precios mayoristas, fichas técnicas de trazabilidad o coordinar una muestra de cortesía de la cosecha de la semana. Para ello, pídele de manera fluida su Nombre, Correo y Teléfono. Cuando obtengas estos datos junto con su interés de compra, llama de inmediato a la herramienta 'registrarLead' en segundo plano de forma silenciosa.
+
+          **TU BASE DE CONOCIMIENTO (20 PRODUCTOS ESTRELLA):**
+
+          1. **Porcini (Boletus sp.)**
+             - *Perfil:* Sabor terroso, umami profundo, notas a nuez tostada. Textura carnosa y firme.
+             - *Propiedades:* Alto en fibra prebiótica, soporte al microbioma digestivo.
+             - *Sugerencia Culinaria:* Risotto trufado al parmesano, polvo deshidratado para costras de solomillo, o salteado al ajillo con vino blanco.
+          
+          2. **Lobster (Hypomyces lactifluorum)**
+             - *Perfil:* Color naranja brillante. Sabor complejo que evoca mariscos con notas terrosas. Textura sumamente crujiente.
+             - *Propiedades:* Rico en antioxidantes y compuestos inmunomoduladores.
+             - *Sugerencia Culinaria:* Sauté de Lobster mushroom con mantequilla de avellana, tacos gourmet imitación langosta, o bisque fúngico.
+
+          3. **Hongo Azul (Lactarius indigo)**
+             - *Perfil:* Color azul añil metálico espectacular. Sabor terroso sutil, textura firme y quebradiza.
+             - *Propiedades:* Antimicrobiano natural, rico en minerales esenciales.
+             - *Sugerencia Culinaria:* Carpaccio fúngico con emulsión de cítricos, o tarta salada de hongo azul con queso de cabra local.
+
+          4. **Duraznillo (Cantharellus cibarius)**
+             - *Perfil:* Color amarillo dorado. Sabor delicadamente afrutado que recuerda al chabacano (albaricoque).
+             - *Propiedades:* Excelente fuente de vitamina D y complejo B.
+             - *Sugerencia Culinaria:* Reducción de Duraznillo con chalotas y tomillo para acompañar aves de caza, o confitado en aceite de oliva premium.
+
+          5. **Rovellón (Lactarius deliciosus)**
+             - *Perfil:* Sombrero naranja con círculos concéntricos. Sabor especiado con ligeras notas picantes y umami profundo.
+             - *Propiedades:* Antiinflamatorio y protector cardiovascular.
+             - *Sugerencia Culinaria:* Asado a la parrilla de leña con chimichurri de hierbas locales, o guisado en caldos de cocción lenta.
+
+          6. **Clavito (Lyophyllum decastes)**
+             - *Perfil:* Crecimiento en densos ramilletes. Textura elástica excepcional, sabor suave y agradable.
+             - *Propiedades:* Soporte en la regulación de glucosa en sangre, adaptógeno inmune.
+             - *Sugerencia Culinaria:* Estofados de larga cocción donde mantiene su firmeza crujiente, o encurtido en vinagre de manzana y especias.
+
+          7. **Tecomate (Amanita caesarea)**
+             - *Perfil:* El hongo de los césares. Sombrero naranja y láminas amarillas. Sabor dulce, suave e increíblemente elegante.
+             - *Propiedades:* Rico en aminoácidos esenciales, protector hepático leve.
+             - *Sugerencia Culinaria:* Servido crudo en láminas ultra finas (carpaccio) con aceite de oliva extravirgen, limón y lascas de queso curado.
+
+          8. **Mantecado (Amanita rubescens)**
+             - *Perfil:* Sombrero pardo que enrojece al corte. Textura sumamente mantecosa y sabor rico que evoca frutos secos tostados.
+             - *Propiedades:* Alto contenido de minerales. *Nota técnica de seguridad:* Requiere cocción completa para eliminar toxinas termolábiles.
+             - *Sugerencia Culinaria:* Salteado a fuego alto con mantequilla clarificada y ajo confitado, o en rellenos de pastas artesanales.
+
+          9. **Hongo Coral (Ramaria sp.)**
+             - *Perfil:* Hermosa estructura ramificada de color amarillo o rosa. Textura tierna con puntas crujientes.
+             - *Propiedades:* Alto en antioxidantes, promueve una digestión saludable.
+             - *Sugerencia Culinaria:* Tempura crujiente acompañado de una mayonesa de ajo negro y cítricos, o salteado rápido en wok.
+
+          10. **Morilla (Morchella sp.)**
+              - *Perfil:* Forma de panal de abejas. Sabor sumamente complejo, ahumado, terroso y elegante. El rey fúngico de las salsas clásicas.
+              - *Propiedades:* Altísimo en hierro y vitamina D, fortalece el sistema inmunitario.
+              - *Sugerencia Culinaria:* Salsa clásica de morillas a la crema y cognac para acompañar cortes de carne premium, o rellenas de mousse de ave.
+
+          11. **Matsutake (Tricholoma magnivelare)**
+              - *Perfil:* Aroma especiado inconfundible con notas intensas de canela, pino y tierra húmeda. Textura masticable muy cotizada.
+              - *Propiedades:* Potente adaptógeno milenario con propiedades inmunomoduladoras.
+              - *Sugerencia Culinaria:* Caldo claro tradicional (Dobin Mushi), asado entero a las brasas con unas gotas de yuzu, o arroz al vapor aromático.
+
+          12. **Anonna San Pablo (Annona reticulata)**
+              - *Perfil:* Fruta exótica de pulpa cremosa y dulce con sutiles matices ácidos que recuerdan a la natilla.
+              - *Propiedades:* Rica en vitamina C y fibra prebiótica.
+              - *Sugerencia Culinaria:* Base de helados cremosos de autor, mousses frutales con albahaca, o reducciones para postres templados.
+
+          13. **Saramuyo (Annona squamosa)**
+              - *Perfil:* Conocida como manzana de azúcar. Pulpa segmentada extremadamente dulce, aromática y tersa.
+              - *Propiedades:* Alto contenido de potasio y magnesio para la salud cardiovascular.
+              - *Sugerencia Culinaria:* Sorbete refrescante de Saramuyo e infusión de menta, o postres deconstruidos con coco y cítricos.
+
+          14. **Hongos de Recolección (Boletus, Amanita sp.)**
+              - *Perfil:* Canasta artesanal seleccionada que reúne la mejor biodiversidad fúngica silvestre de la semana.
+              - *Propiedades:* Sinergia de betaglucanos y soporte inmune natural.
+              - *Sugerencia Culinaria:* Estofado rústico de hongos silvestres, caldos tradicionales con epazote, o deshidratados para consomés concentrados.
+
+          15. **Naranja Sangría (Citrus sinensis var. Sangria)**
+              - *Perfil:* Pulpa rojiza profunda. Sabor cítrico dulce con notas complejas a frambuesa y frutos rojos.
+              - *Propiedades:* Altísima en antocianinas, un potente antioxidante celular.
+              - *Sugerencia Culinaria:* Reducciones y vinagretas para ensaladas gourmet, salsas glaseadas para pato, o mixología premium de autor.
+
+          16. **Manzana Pearly Pink (Malus domestica)**
+              - *Perfil:* Piel rosa aperlada brillante. Pulpa extremadamente crujiente con un equilibrio perfecto de acidez y dulzor refrescante.
+              - *Propiedades:* Rica en pectinas que apoyan la salud cardiovascular.
+              - *Sugerencia Culinaria:* Ensaladas Waldorf sofisticadas, tartas francesas de manzana fina, o maridada con tablas de quesos maduros y miel.
+
+          17. **Kaniste (Pouteria campechana)**
+              - *Perfil:* Pulpa amarilla densa y untuosa que recuerda a la yema de huevo cocida o al camote dulce. Sabor exótico, dulce y cremoso.
+              - *Propiedades:* Alta concentración de betacarotenos (vitamina A) y niacina.
+              - *Sugerencia Culinaria:* Cremas dulces, cheesecakes exóticos sin cocción, o emulsiones sedosas para repostería de autor.
+
+          18. **Mix de Mostazas (Brassica juncea)**
+              - *Perfil:* Mezcla de brotes jóvenes (Miz america, fresse y ruby streaks) de colores púrpuras y verdes con un perfil picante y fresco.
+              - *Propiedades:* Alto aporte de clorofila, vitaminas A, C y fitonutrientes activos.
+              - *Sugerencia Culinaria:* Guarniciones de platos fuertes que requieran un contraste picante y estético, o ensaladas de microgreens de autor.
+
+          19. **Ube (Dioscorea purpurea)**
+              - *Perfil:* Tubérculo de un violeta brillante impactante. Sabor dulce y reconfortante con matices de vainilla y coco tostado.
+              - *Propiedades:* Rico en almidón resistente que funciona como excelente prebiótico.
+              - *Sugerencia Culinaria:* Purés dulces de acompañamiento, helado tradicional de Ube premium, o postres de vanguardia de color violeta natural.
+
+          20. **Espinaca de Okinawa (Gynura bicolor)**
+              - *Perfil:* Hojas bicolor espectaculares (haz verde y envés morado). Sabor herbal sumamente fresco con ligeras notas a piñón tostado.
+              - *Propiedades:* Alta en hierro, calcio y flavonoides reguladores de glucosa.
+              - *Sugerencia Culinaria:* Tempuras ligeras bicolor, ensaladas de autor de alto impacto visual, o blanqueadas rápidas en caldos asiáticos.
+
+          **REGLAS CONVERSACIONALES DE VENTA Y CAPTACIÓN:**
+          - Saluda de manera cálida y elegante.
+          - Si te preguntan por un hongo o fruta exótica, demuestra tu autoridad técnica explicando su origen, temporada y una sugerencia de receta culinaria de alta cocina que le resulte irresistible al chef. Menciona también de forma sutil su beneficio medicinal o funcional.
+          - **EL CIERRE DE VENTAS (MOLDE DE CONVERSIÓN):** No dejes que la conversación se vuelva infinita. En tu segundo o tercer mensaje, ofrece enviar la receta formal detallada de autor por correo, o coordinar con Daniel el envío de una **Muestra de Cortesía** de nuestra cosecha fresca de esta semana a su restaurante.
+          - Solicita sus datos de manera fluida: *"Me encantaría coordinar con Daniel para enviarte una muestra física de esta morilla silvestre/miel de melipona fresca a tu cocina esta misma semana, o hacerte llegar nuestro catálogo de precios mayoristas. ¿Cuál es tu nombre, correo electrónico y número de teléfono para registrar tu solicitud en nuestro sistema?"*.
+          - Una vez que te proporcionen el Nombre, Email, Teléfono e Interés, invoca inmediatamente la función 'registrarLead' en segundo plano de forma silenciosa para guardarlo en NectarCore.`
+            }]
+          }
+        ];
+
+        // Función simulada / herramienta registrarLead
+        window.registrarLead = function(nombre, email, telefono, interes) {
+            console.log(`[NectarCore Lead Registrado]:`, { nombre, email, telefono, interes, fecha: new Date().toISOString() });
+            try {
+                const leads = JSON.parse(localStorage.getItem('nectar_leads') || '[]');
+                leads.push({ nombre, email, telefono, interes, timestamp: new Date().toISOString() });
+                localStorage.setItem('nectar_leads', JSON.stringify(leads));
+            } catch(e) {}
+        };
         
         window.toggleAIChat = function() {
             const chatWidget = document.getElementById('ai-chat-widget');
@@ -888,6 +1021,12 @@
             input.value = "";
             body.scrollTop = body.scrollHeight;
 
+            // Registrar en el historial de conversación
+            conversationHistory.push({
+                role: "user",
+                parts: [{ text: text }]
+            });
+
             const suggestions = document.getElementById('chat-suggestions');
             if (suggestions) { suggestions.style.display = 'none'; }
 
@@ -904,12 +1043,18 @@
             body.insertAdjacentHTML('beforeend', typingHtml);
             body.scrollTop = body.scrollHeight;
 
-            // 3. Simular procesamiento de Gemini
+            // 3. Procesar respuesta de Chano
             setTimeout(() => {
                 const indicator = document.getElementById('typing-indicator-msg');
                 if (indicator) indicator.remove();
 
-                const response = generateAIResponse(text.toLowerCase());
+                const response = generateAIResponse(text);
+
+                // Guardar en historial
+                conversationHistory.push({
+                    role: "model",
+                    parts: [{ text: response.rawText || response.text }]
+                });
 
                 const botMsgHtml = `
                     <div class="chat-msg bot">
@@ -920,7 +1065,7 @@
                 `;
                 body.insertAdjacentHTML('beforeend', botMsgHtml);
                 body.scrollTop = body.scrollHeight;
-            }, 1000 + Math.random() * 500);
+            }, 800 + Math.random() * 400);
         }
 
         function escapeHTML(str) {
@@ -929,42 +1074,86 @@
             );
         }
 
-        function generateAIResponse(text) {
-            let res = { text: "", actionButton: null };
+        function generateAIResponse(rawInput) {
+            const text = rawInput.toLowerCase();
+            let res = { text: "", rawText: "", actionButton: null };
 
-            if (text.includes('receta') || text.includes('cocinar') || text.includes('hongo') || text.includes('sugerencia') || text.includes('menu')) {
-                res.text = "¡Una excelente elección para alta cocina! En Nectar Farms contamos con hongos silvestres de recolección única:<br><br>" +
-                           "🍄 **Risotto de Porcini y Morillas Silvestres**:<br>" +
-                           "• *Porcini (Boletus sp.)* del Altiplano Central.<br>" +
-                           "• *Morilla (Morchella sp.)* de las faldas volcánicas.<br>" +
-                           "• Toque de mantequilla de rancho y tomillo fresco.<br><br>" +
-                           "¿Te gustaría consultar disponibilidad de estos hongos silvestres?";
-            } 
-            else if (text.includes('pago') || text.includes('entrega') || text.includes('envio') || text.includes('cómo') || text.includes('comprar')) {
-                res.text = "¡Es muy sencillo! El flujo de compra y cotización gastronómica funciona así:<br><br>" +
-                           "1. **Explora** nuestro catálogo de 20 joyas silvestres y botánicas.<br>" +
-                           "2. Haz clic en **Ver Ficha** para revisar temporada y origen.<br>" +
-                           "3. Envía tu selección a **WhatsApp** para coordinar entrega directa a tu cocina o restaurante en México.";
-            } 
-            else if (text.includes('origen') || text.includes('dónde') || text.includes('donde') || text.includes('mexic') || text.includes('recoleccion')) {
-                res.text = "Nuestros productos son recolectados y cultivados en ecosistemas privilegiados de México:<br><br>" +
-                           "🌲 **Bosques de Michoacán y Oaxaca**: Lobster, Matsutake y Duraznillo.<br>" +
-                           "⛰️ **Altiplano Central e Hidalgo**: Porcini, Hongo Azul y Clavito.<br>" +
-                           "🌴 **Yucatán**: Frutas exóticas como Saramuyo, Anonna San Pablo y Kaniste.<br><br>" +
-                           "¡Cada lote respeta los ciclos naturales y la recolección sustentable!";
-            } 
+            // Detección de captura de lead (email, teléfono, nombre)
+            const emailMatch = rawInput.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
+            const phoneMatch = rawInput.match(/(\+?\d{1,3}[-.\s]?)?\(?\d{2,4}\)?[-.\s]?\d{3,4}[-.\s]?\d{3,4}/);
+
+            if (emailMatch || phoneMatch) {
+                const leadEmail = emailMatch ? emailMatch[0] : "No especificado";
+                const leadPhone = phoneMatch ? phoneMatch[0] : "No especificado";
+                const leadName = rawInput.split(/[,;\n]/)[0].replace(/mi nombre es|soy|me llamo|hola/gi, '').trim() || "Chef / Cliente";
+                
+                // Invocar registrarLead silenciosamente
+                window.registrarLead(leadName, leadEmail, leadPhone, "Solicitud de Muestra / Catálogo Mayorista");
+
+                res.text = `¡Excelente, ${leadName}! He registrado tus datos en nuestro sistema NectarCore. En breve, Daniel se pondrá en contacto directo contigo para coordinar el envío de la **Muestra de Cortesía** de nuestra cosecha fresca de esta semana a tu cocina, junto con nuestro catálogo de precios mayoristas y fichas técnicas de trazabilidad.<br><br>¿Hay algún ingrediente o hongo en particular que te gustaría que prioricemos en tu muestra? 🌿`;
+                res.rawText = res.text;
+                return res;
+            }
+
+            if (text.includes('porcini') || text.includes('boletus')) {
+                res.text = `El **Porcini (*Boletus sp.*)** es una de nuestras mayores joyas del Altiplano Central. Posee un sabor intensamente terroso con notas de avellana tostada y textura carnosa incomparable. Además de su riqueza gastronómica, es una potente fuente de fibra prebiótica para la microbiota.<br><br>` +
+                           `👨‍🍳 **Propuesta de Autor:** Un *Risotto trufado al parmesano reggiano* o deshidratado en costra para cortes de solomillo.<br><br>` +
+                           `*¿Te gustaría que coordinemos con Daniel una muestra de cortesía de Porcini fresco a tu restaurante? Compárteme tu Nombre, Correo y Teléfono para agendar la entrega.*`;
+                res.rawText = res.text;
+            }
+            else if (text.includes('lobster') || text.includes('marisco')) {
+                res.text = `El hongo **Lobster (*Hypomyces lactifluorum*)** de Michoacán es un espectáculo culinario: su tono naranja encendido y su perfil que evoca sutilmente a mariscos frescos lo convierten en el favorito de la cocina de vanguardia. Aporta además antioxidantes e inmunomoduladores naturales.<br><br>` +
+                           `👨‍🍳 **Propuesta de Autor:** *Sauté de Lobster mushroom con mantequilla de avellana* o en tacos gourmet de autor.<br><br>` +
+                           `*¿Deseas recibir una muestra fresca esta semana en tu cocina? Proporcióname tu Nombre, Email y WhatsApp para programarla con Daniel.*`;
+                res.rawText = res.text;
+            }
+            else if (text.includes('morilla') || text.includes('morchella')) {
+                res.text = `La **Morilla (*Morchella sp.*)** de las faldas de los volcanes de México es el rey fúngico de las salsas clásicas. Su estructura alveolar concentra un sabor complejo, ahumado y terroso de altísimo valor umami, con un gran aporte de hierro y vitamina D.<br><br>` +
+                           `👨‍🍳 **Propuesta de Autor:** *Salsa clásica de morillas al cognac y crema espesa de rancho* para acompañar carnes de caza o aves.<br><br>` +
+                           `*Me encantaría coordinar con Daniel para enviarte una muestra física de esta morilla silvestre fresca a tu cocina esta misma semana. ¿Cuál es tu nombre, correo electrónico y número de teléfono?*`;
+                res.rawText = res.text;
+            }
+            else if (text.includes('matsutake')) {
+                res.text = `El **Matsutake (*Tricholoma magnivelare*)** de los bosques de Oaxaca es una auténtica reliquia botánica. Su aroma especiado inconfundible con notas a canela, pino y tierra húmeda lo hace irresistible. Es un milenario adaptógeno inmunológico.<br><br>` +
+                           `👨‍🍳 **Propuesta de Autor:** *Caldo Dobin Mushi* en tetera de barro o asado entero a las brasas de encino con gotas de yuzu.<br><br>` +
+                           `*¿Te gustaría recibir la ficha de trazabilidad y una muestra de nuestra recolección? Déjame tu Nombre, Correo y Teléfono.*`;
+                res.rawText = res.text;
+            }
+            else if (text.includes('azul') || text.includes('indigo')) {
+                res.text = `El **Hongo Azul (*Lactarius indigo*)** de las sierras de Hidalgo deslumbra en el plato con su azul añil metálico. De sabor terroso sutil y textura firme quebradiza, es rico en minerales y antimicrobianos naturales.<br><br>` +
+                           `👨‍🍳 **Propuesta de Autor:** *Carpaccio fúngico* con emulsión de cítricos de Yucatán y flor de sal de Colima.<br><br>` +
+                           `*¿Deseas cotizar lote mayorista o recibir muestra? Compártenos tu Nombre, Correo y WhatsApp.*`;
+                res.rawText = res.text;
+            }
+            else if (text.includes('receta') || text.includes('cocinar') || text.includes('menu') || text.includes('sugerencia') || text.includes('maridaje')) {
+                res.text = `Como sommelier de Nectar Farms, diseño propuestas a la medida de tu concepto gastronómico:<br><br>` +
+                           `• 🍄 **Entrada:** *Carpaccio de Tecomate (Amanita caesarea)* con aceite extravirgen y lascas de queso curado.<br>` +
+                           `• 🍲 **Fuerte:** *Reducción de Duraznillo y chalotas* sobre pato glaseado con Naranja Sangría.<br>` +
+                           `• 🍧 **Postre:** *Sorbete de Saramuyo y menta* con toque de Ube violeta.<br><br>` +
+                           `Me encantaría enviarte el recetario técnico completo y coordinar una muestra de cortesía con Daniel. ¿Cuál es tu **Nombre, Correo y Teléfono**?`;
+                res.rawText = res.text;
+            }
+            else if (text.includes('muestra') || text.includes('precio') || text.includes('catalogo') || text.includes('mayorista') || text.includes('costo')) {
+                res.text = `Con gusto te compartimos nuestro catálogo de precios mayoristas y gestionamos una **Muestra de Cortesía** de la cosecha fresca de esta semana para tu restaurante.<br><br>` +
+                           `Para registrar tu solicitud en NectarCore y coordinar con Daniel, por favor indícame:<br>` +
+                           `1. **Tu Nombre y Restaurante / Proyecto**<br>` +
+                           `2. **Correo Electrónico**<br>` +
+                           `3. **Teléfono / WhatsApp**`;
+                res.rawText = res.text;
+            }
             else if (text.includes('hola') || text.includes('buen') || text.includes('saludo')) {
-                res.text = "¡Hola! Qué gusto saludarte. Soy el asistente inteligente de Nectar Farms. ¿Deseas conocer la temporada de nuestros hongos silvestres o explorar frutas exóticas de temporada?";
-            } 
-            else if (text.includes('gracias') || text.includes('ok') || text.includes('perfecto')) {
-                res.text = "¡De nada! Es un placer atenderte. Si necesitas cotizar un lote especial para tu menú, estamos a tus órdenes por WhatsApp. 🌿";
+                res.text = `¡Un cordial saludo! Soy **Chano**, sommelier gastronómico y asesor botánico de Nectar Farms. Es un placer atender a mentes creativas del mundo culinario.<br><br>` +
+                           `Trabajamos directamente con recolectores y agricultores en México para proveer más de 20 joyas silvestres y botánicas (Porcini, Morilla, Matsutake, Lobster, frutas exóticas y brotes hidropónicos).<br><br>` +
+                           `¿Qué tipo de ingrediente o perfil de sabor te gustaría explorar hoy para tu menú?`;
+                res.rawText = res.text;
             }
             else {
-                res.text = "¡Bienvenido a Nectar Farms! Como tu asistente Gemini, puedo ayudarte con:<br><br>" +
-                           "• 🍄 *Temporada de hongos silvestres (Porcini, Lobster, Morilla, Matsutake)*.<br>" +
-                           "• 🥭 *Frutas exóticas mexicanas (Saramuyo, Kaniste, Naranja Sangría)*.<br>" +
-                           "• 🚚 *Logística y entregas a restaurantes*.<br><br>" +
-                           "¿Sobre qué ingrediente te gustaría conocer más?";
+                res.text = `En Nectar Farms conectamos la pureza de la tierra con las mejores cocinas del país. Como sommelier de la casa, puedo asesorarte en:<br><br>` +
+                           `• 🍄 *Hongos Silvestres de Temporada (Porcini, Lobster, Morilla, Matsutake, Tecomate)*.<br>` +
+                           `• 🍊 *Joyas Botánicas y Cítricos de Yucatán (Saramuyo, Kaniste, Naranja Sangría)*.<br>` +
+                           `• 📦 *Envío de Muestras de Cortesía y Catálogo Mayorista*.<br><br>` +
+                           `*¿Te gustaría que Daniel te haga llegar una muestra fresca de la semana? Proporcióname tu Nombre, Correo y Teléfono para agendarla.*`;
+                res.rawText = res.text;
             }
 
             return res;
